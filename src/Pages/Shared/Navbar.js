@@ -21,7 +21,7 @@ const Navbar = () => {
         <li><Link>Contact Us</Link></li>
     </>
     return (
-        <div className="navbar bg-transparent">
+        <div className="navbar bg-transparent shadow-md bg-[#e1e6e1]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -37,7 +37,7 @@ const Navbar = () => {
 
                     <img src={Logo} className="img-fluid h-full" alt="Logo" />
 
-                    <p className='hidden md:block'>Phone Store</p>
+                    <p className='hidden md:block text-boldGreen font-bold text-2xl'>Phone Store</p>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
