@@ -3,7 +3,7 @@ import BgVideo from "../../../assets/background-video.mp4";
 
 const Advertise = () => {
     return (
-        <div className='h-96 w-full my-28'>
+        <div className='h-96 w-full my-28 dark:bg-black'>
             <video autoPlay loop muted className='h-full w-full'>
                 <source src={BgVideo} type='video/mp4' />
             </video>

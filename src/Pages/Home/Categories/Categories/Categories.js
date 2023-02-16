@@ -16,7 +16,7 @@ const Categories = () => {
         <div>
             <div>
                 <h1 className='text-4xl text-center mt-10 font-bold text-boldGreen'>Categories</h1>
-                <p className='text-center mt-5 mb-10'>Choose your desired phone at low cost with better condition</p>
+                <p className='text-center mt-5 mb-10 dark:text-white'>Choose your desired phone at low cost with better condition</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center mb-10'>
                 {

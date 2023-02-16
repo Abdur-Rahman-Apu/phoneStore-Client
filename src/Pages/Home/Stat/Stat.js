@@ -7,23 +7,23 @@ const Stat = () => {
     const [orders, setOrders] = useState(0)
     return (
         <div className='w-11/12 mx-auto mb-24'>
-            <div className="stats shadow w-full ">
+            <div className="stats shadow w-full dark:bg-[#1F2937] ">
 
                 <div className="stat place-items-center">
-                    <div className="stat-title">Customers</div>
-                    <div className="stat-value text-black">{customers}</div>
+                    <div className="stat-title dark:text-white dark:font-bold">Customers</div>
+                    <div className="stat-value text-black dark:text-boldGreen">{customers}</div>
 
                 </div>
 
                 <div className="stat place-items-center">
-                    <div className="stat-title">Sellers</div>
-                    <div className="stat-value text-boldGreen">{sellers}</div>
+                    <div className="stat-title dark:text-white dark:font-bold">Sellers</div>
+                    <div className="stat-value text-boldGreen dark:text-boldGreen">{sellers}</div>
 
                 </div>
 
                 <div className="stat place-items-center">
-                    <div className="stat-title">Orders Completed</div>
-                    <div className="stat-value text-black">{orders}</div>
+                    <div className="stat-title dark:text-white dark:font-bold">Orders Completed</div>
+                    <div className="stat-value text-black dark:text-boldGreen">{orders}</div>
 
                 </div>
 

@@ -6,7 +6,7 @@ const Services = () => {
     return (
         <div className='my-28'>
             <h3 className='text-center text-4xl font-bold text-boldGreen'>Services</h3>
-            <p className='text-center mt-5 mb-12'>We focus on our customers satisfaction</p>
+            <p className='text-center mt-5 mb-12 dark:text-white'>We focus on our customers satisfaction</p>
             <div className='grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center'>
 
                 <div className=" w-96 p-6 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
