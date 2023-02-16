@@ -9,8 +9,9 @@ const Categories = () => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
-            .catch(error => setError(error.message))
+            .catch(err => setError(err.message))
     }, [])
+
     return (
         <div>
             <div>
@@ -22,9 +23,11 @@ const Categories = () => {
                     categories && categories.map(category => <Category key={category.categoryId} category={category}></Category>)
                 }
             </div>
-            {
-                !categories && <p className='text-3xl text-red-500 text-center'>{error.message}</p>
-            }
+            <div>
+                {
+                    !categories.length && <p className='text-3xl text-red-500 text-center'>{error}</p>
+                }
+            </div>
         </div>
     );
 };

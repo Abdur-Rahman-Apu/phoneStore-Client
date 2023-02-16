@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Category = ({ category }) => {
-    console.log(category);
     const { categoryName, categoryImg } = category;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">

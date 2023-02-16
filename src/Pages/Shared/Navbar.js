@@ -12,10 +12,10 @@ const Navbar = () => {
                 Category
                 <FontAwesomeIcon icon={faAngleDown} />
             </Link>
-            <ul className="p-2 bg-[#3DB070] text-white">
-                <li><Link>Android</Link></li>
-                <li><Link>Iphone</Link></li>
-                <li><Link>Button</Link></li>
+            <ul className="w-full bg-[#3DB070] text-white">
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Android</Link></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Iphone</Link></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Button</Link></li>
             </ul>
         </li>
         <li><Link>Contact Us</Link></li>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn rounded-full bg-[#3DB070] border-0">Log in</Link>
+                <Link className="btn rounded-full bg-boldGreen border-0 ">Log in</Link>
             </div>
         </div>
     );
