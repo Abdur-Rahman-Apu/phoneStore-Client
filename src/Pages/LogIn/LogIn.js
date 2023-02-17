@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Google from '../../assets/google.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../../Context/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const LogIn = () => {
     const [protect, setProtect] = useState(null)
@@ -31,6 +33,63 @@ const LogIn = () => {
 
     }
 
+    //handle Log in
+
+    const { logIn, loading, setLoading } = useContext(AuthContext)
+
+
+    const navigate = useNavigate()
+
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/'
+
+    const handleLogIn = (event) => {
+        event.preventDefault()
+        const email = event.target.childNodes[0].querySelector('input').value
+        const password = event.target.childNodes[1].querySelector('input').value
+
+        fetch(`http://localhost:5000/user?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.result) {
+                    logIn(email, password)
+                        .then(result => {
+                            const user = result.user;
+                            const email = user.email;
+                            console.log(email);
+                            const userInfo = {
+                                email: email
+                            }
+                            fetch('http://localhost:5000/jwt', {
+                                method: 'POST',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(userInfo)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.token) {
+                                        localStorage.setItem('phone-token', data.token)
+                                    }
+                                    toast.success("Log in successfully")
+                                    navigate(from, { replace: true })
+                                })
+                                .catch(error => toast.error("Problem obtained in authentication", {
+                                    duration: 4000,
+                                    position: 'top-center'
+                                }))
+                        })
+                        .catch(error => {
+                            toast.error("Log in failed", {
+                                duration: 4000,
+                                position: 'top-center'
+                            })
+                        })
+                }
+            })
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
             <div className="hero-content flex-col lg:flex-row">
@@ -39,18 +98,18 @@ const LogIn = () => {
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-gray-800 dark:border-gray-700">
-                    <div className="card-body">
+                    <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-boldGreen font-bold">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input type="email" placeholder="email" name='email' className="input input-bordered" />
                         </div>
                         <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text text-boldGreen font-bold">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
                             {
                                 (protect === 'password') && <button onClick={handleDisplay}><FontAwesomeIcon className='absolute bottom-[50px] right-[10px]' icon={faLock} /></button>
                             }
@@ -63,7 +122,7 @@ const LogIn = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-boldGreen border-0">Login</button>
+                            <input type="submit" value="Login" className="btn bg-boldGreen border-0" />
                         </div>
                         <div className="divider dark:text-white">OR</div>
                         <div className="form-control">
@@ -74,7 +133,7 @@ const LogIn = () => {
                         </div>
 
                         <p className='text-center dark:text-white'>Are you a new user? <Link to="/register" className='text-boldGreen font-bold'>Register</Link></p>
-                    </div>
+                    </form>
 
                 </div>
             </div>
