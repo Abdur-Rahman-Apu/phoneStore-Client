@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons'
 
 const Register = () => {
+    const [protect, setProtect] = useState(null)
+
+
+
+
+
+    const handleDisplay = (event) => {
+        const input = event.target.parentElement.parentElement.parentElement.childNodes[1];
+
+        setProtect(input.attributes.type.value)
+
+
+        if (protect === 'password') {
+            setProtect('text')
+        } else {
+            setProtect('password')
+        }
+
+        input.setAttribute("type", `${protect}`)
+
+
+
+        console.log(input.attributes.type);
+
+    }
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
             <div className="hero-content flex-col lg:flex-row">
@@ -42,11 +69,19 @@ const Register = () => {
                             <input type="text" placeholder="email" className="input input-bordered" />
                         </div>
 
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text text-boldGreen font-bold">Password</span>
                             </label>
-                            <input type="text" placeholder="password" className="input input-bordered" />
+                            <input type="password" placeholder="password" className="input input-bordered" />
+
+                            {
+                                (protect === 'password') && <button onClick={handleDisplay}><FontAwesomeIcon className='absolute bottom-[20px] right-[10px]' icon={faLock} /></button>
+                            }
+                            {
+                                (protect === 'text' || protect === null) && <button onClick={handleDisplay}><FontAwesomeIcon className='absolute bottom-[20px] right-[10px]' icon={faUnlock} /></button>
+                            }
+
 
                         </div>
                         <div className="form-control mt-6">

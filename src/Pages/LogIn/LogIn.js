@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Google from '../../assets/google.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faLock, faUnlock } from '@fortawesome/free-solid-svg-icons'
+import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons'
 
 const LogIn = () => {
     const [protect, setProtect] = useState(null)
