@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Google from '../../assets/google.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
