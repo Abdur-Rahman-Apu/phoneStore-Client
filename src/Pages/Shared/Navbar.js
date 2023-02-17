@@ -35,7 +35,7 @@ const Navbar = () => {
 
 
     // menus
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     const menus = <>
         <li><Link to='/'>Home</Link></li>
@@ -97,8 +97,7 @@ const Navbar = () => {
                                     Profile
                                 </Link>
                             </li>
-                            <li><Link>Settings</Link></li>
-                            <li><Link>Logout</Link></li>
+                            <li><button onClick={() => logOut()}>Logout</button></li>
                         </ul>
                     </> :
                         <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>

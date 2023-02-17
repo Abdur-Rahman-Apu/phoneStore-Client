@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from "react-hook-form";
@@ -30,8 +30,9 @@ const Register = () => {
 
     // form validation and store into database 
 
-    const { signUp, updateUserProfile, loading, setLoading } = useContext(AuthContext)
+    const { signUp, updateUserProfile, loading, setLoading, logOut } = useContext(AuthContext)
 
+    const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const handleRegister = (data) => {
@@ -79,11 +80,27 @@ const Register = () => {
                                         .then(data => {
                                             console.log(data);
                                             if (data.acknowledged) {
-                                                toast.success("User registered successfully", {
+
+                                                navigate('/login')
+                                                console.log("Asci");
+
+                                                logOut()
+                                                    .then(() => {
+                                                        console.log("Logged out");
+                                                    })
+
+                                                toast.success("User registered successfully. Please log in", {
                                                     duration: 4000,
                                                     position: 'top-center'
                                                 })
+
+
+
+
                                             }
+
+
+
 
 
 
@@ -111,6 +128,7 @@ const Register = () => {
                 })
             })
         setLoading(false)
+
     }
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
