@@ -30,16 +30,16 @@ const Navbar = () => {
     }
 
     const menus = <>
-        <li><Link>Home</Link></li>
+        <li><Link to='/'>Home</Link></li>
         <li tabIndex={0} className="relative">
             <Link className="flex  items-center">
                 Category
                 <FontAwesomeIcon icon={faAngleDown} />
             </Link>
             <ul className=" bg-boldGreen text-white lg:w-full">
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Android</Link></li>
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Iphone</Link></li>
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Button</Link></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/1" className='justify-center'>Android</Link></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/2" className='justify-center'>Iphone</Link></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className='justify-center'>Button</Link></li>
             </ul>
         </li>
         <li><Link>Contact Us</Link></li>
