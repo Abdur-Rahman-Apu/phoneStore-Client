@@ -6,8 +6,8 @@ const Stat = () => {
     const [sellers, setSellers] = useState(0)
     const [orders, setOrders] = useState(0)
     return (
-        <div className='w-11/12 mx-auto mb-24'>
-            <div className="stats shadow w-full dark:bg-[#1F2937] ">
+        <div className='w-11/12 mx-auto mb-24 min-h-[200px] '>
+            <div className="stats grid-flow-row shadow w-full dark:bg-[#1F2937] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
                 <div className="stat place-items-center">
                     <div className="stat-title dark:text-white dark:font-bold">Customers</div>

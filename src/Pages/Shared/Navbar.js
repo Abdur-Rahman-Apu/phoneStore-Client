@@ -31,12 +31,12 @@ const Navbar = () => {
 
     const menus = <>
         <li><Link>Home</Link></li>
-        <li tabIndex={0}>
+        <li tabIndex={0} className="relative">
             <Link className="flex  items-center">
                 Category
                 <FontAwesomeIcon icon={faAngleDown} />
             </Link>
-            <ul className="w-full bg-[#3DB070] text-white">
+            <ul className=" bg-boldGreen text-white lg:w-full">
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Android</Link></li>
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Iphone</Link></li>
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link className='justify-center'>Button</Link></li>
@@ -52,6 +52,7 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:text-black">
+
                         {
                             menus
                         }
@@ -59,9 +60,9 @@ const Navbar = () => {
                 </div>
                 <Link className="btn btn-ghost normal-case text-xl h-24">
 
-                    <img src={Logo} className="img-fluid h-full" alt="Logo" />
+                    <img src={Logo} className="hidden md:block img-fluid h-full" alt="Logo" />
 
-                    <p className='hidden md:block text-boldGreen font-bold text-2xl dark:text-black'>Phone Store</p>
+                    <p className='text-sm text-boldGreen font-bold md:text-2xl dark:text-black'>Phone Store</p>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -72,7 +73,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn rounded-full bg-boldGreen border-0 ">Log in</Link>
+                <Link className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
                 <label className="swap swap-rotate mx-2" >
 
                     {/* <!-- this hidden checkbox controls the state --> */}
