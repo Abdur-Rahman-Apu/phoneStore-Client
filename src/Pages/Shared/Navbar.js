@@ -73,7 +73,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
+                <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
                 <label className="swap swap-rotate mx-2" >
 
                     {/* <!-- this hidden checkbox controls the state --> */}
