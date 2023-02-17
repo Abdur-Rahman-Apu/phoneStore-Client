@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from "../../assets/logo.png"
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Navbar = () => {
+
+
+    //dark theme
     const [theme, setTheme] = useState(null)
 
     useEffect(() => {
@@ -28,6 +32,10 @@ const Navbar = () => {
     const handleToggleBtn = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark')
     }
+
+
+    // menus
+    const { user } = useContext(AuthContext)
 
     const menus = <>
         <li><Link to='/'>Home</Link></li>
@@ -72,8 +80,32 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className="navbar-end">
-                <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
+            <div className="navbar-end dropdown dropdown-end flex flex-end">
+
+
+
+                {
+                    user ? <>
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user.photoURL} alt="user img" />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 top-[80%]">
+                            <li>
+                                <Link className="justify-between">
+                                    Profile
+                                </Link>
+                            </li>
+                            <li><Link>Settings</Link></li>
+                            <li><Link>Logout</Link></li>
+                        </ul>
+                    </> :
+                        <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
+                }
+
+
+                {/* toggle btn  */}
                 <label className="swap swap-rotate mx-2" >
 
                     {/* <!-- this hidden checkbox controls the state --> */}
