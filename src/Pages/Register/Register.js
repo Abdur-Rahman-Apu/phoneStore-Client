@@ -94,15 +94,7 @@ const Register = () => {
                                                     position: 'top-center'
                                                 })
 
-
-
-
                                             }
-
-
-
-
-
 
                                         })
                                         .catch(error => {

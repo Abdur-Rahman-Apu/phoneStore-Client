@@ -16,7 +16,7 @@ const DashboardLayout = () => {
     if (role === 'Seller') {
 
         menus = <>
-            <li className='mt-8'><Link>Add items</Link></li>
+            <li className='mt-8'><Link to="/dashboard/addItem">Add items</Link></li>
             <li><Link>All items</Link></li>
             <li><Link>All Customers</Link></li>
         </>
