@@ -6,6 +6,7 @@ import Phones from "../Pages/Phones/Phones/Phones";
 import Register from "../Pages/Register/Register";
 
 import Error from "../Pages/Shared/Error";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <Phones></Phones>
+                element: <PrivateRoute><Phones></Phones></PrivateRoute>
             },
             {
                 path: '/login',

@@ -91,6 +91,9 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-32 top-[80%]">
                             <li>
+                                <p className='text-base font-bold text-boldGreen'>{user.displayName}</p>
+                            </li>
+                            <li>
                                 <Link className="justify-between">
                                     Profile
                                 </Link>
