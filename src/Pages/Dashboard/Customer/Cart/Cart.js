@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query'
+import { AuthContext } from '../../../../Context/AuthProvider';
+import CartItem from './CartItem';
 
 const Cart = () => {
+
+    const { user } = useContext(AuthContext)
+
+    const { isLoading, data, refetch } = useQuery(
+        {
+            queryKey: ['bookedItems'],
+            queryFn: async () => {
+                const data = await fetch(`http://localhost:5000/user?email=${user?.email}`)
+                return data.json();
+            }
+        }
+    )
+    const bookedId = data?.user?.booked;
+
+
+
+    console.log(bookedId);
+
+
+
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
@@ -14,35 +37,9 @@ const Cart = () => {
                     </tr>
                 </thead>
                 <tbody>
-
-
-                    <tr>
-
-                        <td>
-
-                            <div>
-                                <div className="font-bold">Hart Hagerty</div>
-
-                            </div>
-
-                        </td>
-                        <td>
-                            <div className="avatar">
-                                <div className="w-24 rounded-xl">
-                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='productImage' />
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <div>
-                                <button className="btn border-0 text-white btn-info btn-xs mr-4">Pay</button>
-                                <button className="btn btn-error text-white b btn-xs">Delete</button>
-                            </div>
-                        </th>
-                    </tr>
-
+                    {
+                        bookedId && bookedId?.map(item => <CartItem key={item.projectId} item={item}></CartItem>)
+                    }
                 </tbody>
 
 
