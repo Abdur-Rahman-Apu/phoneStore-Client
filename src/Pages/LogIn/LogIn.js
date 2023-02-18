@@ -35,14 +35,14 @@ const LogIn = () => {
 
     //handle Log in
 
-    const { logIn, loading, setLoading } = useContext(AuthContext)
+    const { logIn, loading, setLoading, updatePassword } = useContext(AuthContext)
 
 
     const navigate = useNavigate()
 
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/'
-    console.log(from);
+
 
     const handleLogIn = (event) => {
 
@@ -125,7 +125,7 @@ const LogIn = () => {
                             }
 
                             <label className="label">
-                                <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                                <Link to="/reset" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">
