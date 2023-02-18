@@ -10,6 +10,29 @@ const DashboardLayout = () => {
     const [role] = useRole()
 
     console.log(role);
+
+    let menus;
+
+    if (role === 'Seller') {
+
+        menus = <>
+            <li className='mt-8'><Link>Add items</Link></li>
+            <li><Link>All items</Link></li>
+            <li><Link>All Customers</Link></li>
+        </>
+
+    } else if (role === 'Customer') {
+        menus = <>
+            <li className='mt-8'><Link>Cart</Link></li>
+            <li><Link>Buy Product</Link></li>
+        </>
+
+    } else if (role === 'Admin') {
+        menus = <>
+            <li className='mt-8'><Link>All Sellers</Link></li>
+            <li><Link>All Buyers</Link></li>
+        </>
+    }
     return (
         <div>
             <Navbar></Navbar>
@@ -25,11 +48,12 @@ const DashboardLayout = () => {
                 <div className="drawer-side shadow-md ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-                    <ul className="menu p-4 w-full md:w-80 bg-green-400 font-bold text-base-content">
+                    <ul className="menu p-4 w-full md:w-80 bg-green-400 font-bold text-[#3e363f]">
                         {/* <!-- Sidebar content here --> */}
                         <li className='absolute top-2 right-2 lg:hidden '><label htmlFor='my-drawer-2' className="btn btn-sm btn-circle bg-boldGreen text-white">✕</label></li>
-                        <li className='mt-8'><Link>Sidebar Item 1</Link></li>
-                        <li><Link>Sidebar Item 2</Link></li>
+                        {
+                            menus
+                        }
                     </ul>
 
                 </div>
