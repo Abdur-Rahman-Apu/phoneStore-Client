@@ -44,7 +44,7 @@ const Navbar = () => {
                 Category
                 <FontAwesomeIcon icon={faAngleDown} />
             </Link>
-            <ul className=" bg-boldGreen text-white lg:w-full">
+            <ul className=" bg-boldGreen text-white lg:w-full z-10">
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/1" className='justify-center'>Android</Link></li>
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/2" className='justify-center'>Iphone</Link></li>
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className='justify-center'>Button</Link></li>

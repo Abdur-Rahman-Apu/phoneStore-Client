@@ -14,7 +14,6 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-xs bg-boldGreen border-0 drawer-button lg:hidden mb-5">Sidebar</label>
                     <Outlet></Outlet>
 
-
                 </div>
                 <div className="drawer-side shadow-md ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
