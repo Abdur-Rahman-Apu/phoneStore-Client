@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from "../../assets/logo.png"
 import { AuthContext } from '../../Context/AuthProvider';
+import useRole from '../../CustomHooks/useRole';
 
 const Navbar = () => {
 
@@ -51,9 +52,16 @@ const Navbar = () => {
             </ul>
         </li>
 
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        {
+            user && <li><Link to="/dashboard">Dashboard</Link></li>
+        }
         <li><Link>Contact Us</Link></li>
     </>
+
+    //user role
+    const [role] = useRole()
+
+
     return (
         <div className="navbar bg-transparent shadow-md bg-[#e1e6e1] dark:bg-[#b1fc99] dark:shadow-lg">
             <div className="navbar-start">
@@ -98,6 +106,7 @@ const Navbar = () => {
                             <li>
                                 <Link className="justify-between">
                                     Profile
+                                    <span className="badge text-[7px]">{role}</span>
                                 </Link>
                             </li>
                             <li><button onClick={() => logOut()}>Logout</button></li>

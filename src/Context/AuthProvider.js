@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Firebase/Firebase.init';
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
+
 export const AuthContext = createContext()
 
 const auth = getAuth(app)
@@ -46,6 +47,8 @@ const AuthProvider = ({ children }) => {
     const updatePassword = (email) => {
         return sendPasswordResetEmail(auth, email);
     }
+
+
 
 
     // manage user 
