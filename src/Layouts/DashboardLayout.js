@@ -23,14 +23,14 @@ const DashboardLayout = () => {
 
     } else if (role === 'Customer') {
         menus = <>
-            <li className='mt-8'><Link>Cart</Link></li>
-            <li><Link>Buy Product</Link></li>
+            <li className='mt-8'><Link to="/dashboard/cart">Cart</Link></li>
+            <li><Link to="/dashboard/myProduct">Buy Product</Link></li>
         </>
 
     } else if (role === 'Admin') {
         menus = <>
-            <li className='mt-8'><Link>All Sellers</Link></li>
-            <li><Link>All Buyers</Link></li>
+            <li className='mt-8'><Link to="/dashboard/allSellers">All Sellers</Link></li>
+            <li><Link to="/dashboard/allBuyers">All Buyers</Link></li>
         </>
     }
     return (
