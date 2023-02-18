@@ -5,7 +5,7 @@ import useRole from '../CustomHooks/useRole';
 import Navbar from '../Pages/Shared/Navbar';
 
 const DashboardLayout = () => {
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
 
     const [role] = useRole()
 
@@ -32,6 +32,10 @@ const DashboardLayout = () => {
             <li className='mt-8'><Link to="/dashboard/allSellers">All Sellers</Link></li>
             <li><Link to="/dashboard/allBuyers">All Buyers</Link></li>
         </>
+    }
+
+    if (loading) {
+        return <><div>Loading...</div></>
     }
     return (
         <div>

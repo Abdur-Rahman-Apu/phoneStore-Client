@@ -71,19 +71,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/cart',
-                element: <Cart></Cart>
+                element: <PrivateRoute><Cart></Cart></PrivateRoute>
             },
             {
                 path: '/dashboard/myProduct',
-                element: <BuyedProduct></BuyedProduct>
+                element: <PrivateRoute><BuyedProduct></BuyedProduct></PrivateRoute>
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
             },
         ]
     }
