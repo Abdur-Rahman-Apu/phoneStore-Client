@@ -3,6 +3,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import AddItem from "../Pages/Dashboard/Seller/AddItem/AddItem";
+import AllItems from "../Pages/Dashboard/Seller/AllItems/AllItems";
 import SoldItems from "../Pages/Dashboard/Seller/SoldItems/SoldItems";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/soldItems',
                 element: <PrivateRoute><SoldItems></SoldItems></PrivateRoute>
+            },
+            {
+                path: '/dashboard/allItems',
+                element: <PrivateRoute><AllItems></AllItems></PrivateRoute>
             },
         ]
     }
