@@ -35,7 +35,7 @@ const Phones = () => {
         <div>
             <h1 className='text-3xl capitalize text-boldGreen my-16 font-bold text-center'>{category} phones</h1>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 justify-items-center'>
                 {
                     items && items?.map((item, idx) => <Phone key={idx} item={item}></Phone>)
                 }

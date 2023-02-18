@@ -12,6 +12,7 @@ import SoldItems from "../Pages/Dashboard/Seller/SoldItems/SoldItems";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
 import PasswordReset from "../Pages/PasswordReset/PasswordReset";
+import PhoneDetails from "../Pages/Phones/PhoneDetails/PhoneDetails";
 import Phones from "../Pages/Phones/Phones/Phones";
 import Register from "../Pages/Register/Register";
 
@@ -45,6 +46,11 @@ export const router = createBrowserRouter([
             {
                 path: '/reset',
                 element: <PasswordReset></PasswordReset>
+            },
+            {
+                path: '/phoneDetails/:id',
+                element: <PhoneDetails></PhoneDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/product/${params?.id}`)
             },
         ]
     },
@@ -85,6 +91,7 @@ export const router = createBrowserRouter([
                 path: '/dashboard/allSellers',
                 element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
             },
+
         ]
     }
 ])
