@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider';
+import useRole from '../CustomHooks/useRole';
 import Navbar from '../Pages/Shared/Navbar';
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext)
+
+    const [role] = useRole()
+
+    console.log(role);
     return (
         <div>
             <Navbar></Navbar>
