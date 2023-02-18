@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
+import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Home from "../Pages/Home/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
 import PasswordReset from "../Pages/PasswordReset/PasswordReset";
@@ -37,6 +39,17 @@ export const router = createBrowserRouter([
                 path: '/reset',
                 element: <PasswordReset></PasswordReset>
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        errorElement: <Error></Error>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            }
         ]
     }
 ])

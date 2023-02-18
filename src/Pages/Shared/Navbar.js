@@ -50,6 +50,8 @@ const Navbar = () => {
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className='justify-center'>Button</Link></li>
             </ul>
         </li>
+
+        <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link>Contact Us</Link></li>
     </>
     return (
