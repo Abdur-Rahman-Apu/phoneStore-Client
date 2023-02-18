@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const PhoneDetails = () => {
@@ -10,6 +10,8 @@ const PhoneDetails = () => {
     const { productName, productPrice, description, productImage, SellerEmail } = data;
 
     const { user } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
 
     const handleBooking = () => {
@@ -31,6 +33,7 @@ const PhoneDetails = () => {
                         position: 'top-center'
                     })
                     localStorage.setItem("Total-cart", parseInt(localStorage.getItem('Total-cart')) + 1)
+                    navigate('/dashboard/cart')
                 }
             })
     }
