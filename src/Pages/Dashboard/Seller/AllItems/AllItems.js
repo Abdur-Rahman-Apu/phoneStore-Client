@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { AuthContext } from '../../../../Context/AuthProvider';
+import useProduct from '../../../../CustomHooks/useProduct';
+import ShowSellerItems from './ShowSellerItems';
 
 const AllItems = () => {
+
+
+
+    const [products] = useProduct()
+
+    const { user, loading, setLoading } = useContext(AuthContext)
+    console.log(products);
+
+
+
+
+    const androidData = products?.android;
+    const iphoneData = products?.iphone;
+    const buttonData = products?.button;
+
+    console.log("android", androidData)
+
+
+    const userProducts = [].concat(androidData?.filter(data => data?.sellerEmail === user?.email)).concat(iphoneData?.filter(data => data?.sellerEmail === user?.email)).concat(buttonData?.filter(data => data?.sellerEmail === user?.email))
+
+    console.log(userProducts);
+
+    if (loading) {
+        return 'Loading'
+    }
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
@@ -9,6 +37,7 @@ const AllItems = () => {
                     <tr>
                         <th>Name</th>
                         <th>Image</th>
+                        <th>Category</th>
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
@@ -16,30 +45,9 @@ const AllItems = () => {
                 <tbody>
 
 
-                    <tr>
-
-                        <td>
-
-                            <div>
-                                <div className="font-bold">Hart Hagerty</div>
-
-                            </div>
-
-                        </td>
-                        <td>
-                            <div className="avatar">
-                                <div className="w-24 rounded-xl">
-                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='productImage' />
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <button className="btn bg-boldGreen text-white btn-ghost btn-xs">Advertise</button>
-                            <button className="btn btn-error text-white ml-4 btn-xs">Delete</button>
-                        </th>
-                    </tr>
+                    {
+                        userProducts && userProducts?.map((product, idx) => <ShowSellerItems key={idx} product={product}></ShowSellerItems>)
+                    }
 
 
                 </tbody>

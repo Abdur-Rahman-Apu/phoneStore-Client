@@ -13,6 +13,7 @@ const useRole = () => {
             .then(data => setRole(data?.role))
     }, [user?.email])
 
+
     return [role]
 };
 
