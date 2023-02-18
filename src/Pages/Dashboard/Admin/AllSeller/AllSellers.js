@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ShowAllSellers from './ShowAllSellers';
 
 const AllSellers = () => {
+    const [sellers, setSellers] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users`)
+            .then(res => res.json())
+            .then(data => setSellers(data?.seller))
+    }, [])
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
@@ -16,28 +24,9 @@ const AllSellers = () => {
                 <tbody>
 
 
-                    <tr>
-
-                        <td>
-
-                            <div>
-                                <div className="font-bold">Hart Hagerty</div>
-
-                            </div>
-
-                        </td>
-
-                        <td><div className="avatar">
-                            <div className="w-24 rounded-xl">
-                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='img' />
-                            </div>
-                        </div></td>
-
-                        <td>Purple</td>
-                        <th>
-                            <button className="btn btn-error btn-xs">Delete</button>
-                        </th>
-                    </tr>
+                    {
+                        sellers && sellers?.map((seller, idx) => <ShowAllSellers key={idx} seller={seller}></ShowAllSellers>)
+                    }
 
 
 
