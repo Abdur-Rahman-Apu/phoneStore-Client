@@ -30,6 +30,7 @@ const PhoneDetails = () => {
                         duration: 4000,
                         position: 'top-center'
                     })
+                    localStorage.setItem("Total-cart", parseInt(localStorage.getItem('Total-cart')) + 1)
                 }
             })
     }

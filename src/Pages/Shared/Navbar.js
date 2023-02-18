@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from "../../assets/logo.png"
 import { AuthContext } from '../../Context/AuthProvider';
 import useRole from '../../CustomHooks/useRole';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
 
@@ -36,7 +37,9 @@ const Navbar = () => {
 
 
     // menus
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut, loading, setLoading } = useContext(AuthContext)
+
+
 
     const menus = <>
         <li><Link to='/'>Home</Link></li>
@@ -61,7 +64,31 @@ const Navbar = () => {
     //user role
     const [role] = useRole()
 
+    const [cartCount, setCartCount] = useState(0)
 
+
+
+    setLoading(true)
+    console.log("Before render");
+
+    const { data, refetch } = useQuery({
+        queryKey: ['cartData'],
+        queryFn: async () => {
+            const response = await fetch(`http://localhost:5000/user?email=${user?.email}`);
+            return response.json()
+        }
+    })
+
+
+
+    console.log("After render");
+    console.log(data);
+
+
+    setLoading(false)
+    if (loading) {
+        return "Loading"
+    }
     return (
         <div className="navbar bg-transparent shadow-md bg-[#e1e6e1] dark:bg-[#b1fc99] dark:shadow-lg">
             <div className="navbar-start">
@@ -91,6 +118,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end dropdown dropdown-end flex flex-end">
+                {
+                    role && role === 'Customer' && <>
+                        <label tabIndex={0} className="btn btn-ghost btn-circle mr-2">
+                            <div className="indicator">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                <span className="badge badge-sm indicator-item">{data}</span>
+                            </div>
+                        </label>
+                    </>
+                }
 
                 {
                     user ? <>
@@ -109,7 +146,11 @@ const Navbar = () => {
                                     <span className="badge text-[7px]">{role}</span>
                                 </Link>
                             </li>
-                            <li><button onClick={() => logOut()}>Logout</button></li>
+                            <li><button onClick={() => {
+                                logOut()
+
+                                localStorage.removeItem('Total-cart')
+                            }}>Logout</button></li>
                         </ul>
                     </> :
                         <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
