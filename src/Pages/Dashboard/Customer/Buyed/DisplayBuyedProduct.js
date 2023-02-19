@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DisplayBuyedProduct = ({ item }) => {
-
+    console.log(item);
     return (
         <tr>
             <td>{item?._id}</td>
@@ -23,7 +23,7 @@ const DisplayBuyedProduct = ({ item }) => {
             <td>{item?.productInfo?.productPrice}</td>
             <td>{item?.transactionId}</td>
             <td>
-                {item?.buyerEmail}
+                {item?.productInfo?.sellerEmail}
             </td>
         </tr>
     );
