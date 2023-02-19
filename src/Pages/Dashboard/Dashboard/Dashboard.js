@@ -19,8 +19,8 @@ const Dashboard = () => {
     const [bought, setBought] = useState(0)
 
     // admin
-    const [seller, setSeller] = useState(0)
-    const [buyer, setBuyer] = useState(0)
+    let [seller, setSeller] = useState(0)
+    let [buyer, setBuyer] = useState(0)
 
     const { user } = useContext(AuthContext)
 
@@ -74,15 +74,28 @@ const Dashboard = () => {
 
             })
 
+    }
 
 
 
+    if (role === 'Admin') {
 
+        fetch(`http://localhost:5000/users`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                const sellerLength = data.seller.length
+                const buyerLength = data.customer.length
+
+                setSeller(sellerLength)
+                setBuyer(buyerLength)
+            })
     }
 
     return (
         <div>
-            <h1 className='text-2xl font-bold text-boldGreen text-center'>Welcome to dashboard</h1>
+            <h1 className='text-2xl capitalize font-bold text-boldGreen text-center'>Welcome to dashboard</h1>
 
             {
                 role && role === 'Seller' && <>
@@ -138,18 +151,18 @@ const Dashboard = () => {
                 role && role === 'Admin' && <>
                     <div className='grid grid-col-1 grid-cols-2 justify-items-center mt-10'>
 
-                        <div className="w-11/12  mt-5 lg:mt-0 p-6 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div className="w-11/12  mt-5 lg:mt-0 p-6 flex flex-col items-center bg-[#706fd3] border border-gray-200 rounded-lg shadow ">
 
-                            <h5 className="mb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total Seller</h5>
+                            <h5 className="mb-4 text-2xl font-semibold tracking-tight text-white">Total Seller</h5>
 
-                            <p className="mb-3 font-normal text-xl text-gray-500 dark:text-gray-400">{seller}</p>
+                            <p className="mb-3 font-normal text-xl text-white">{seller}</p>
                         </div>
 
-                        <div className="w-11/12 mt-5 lg:mt-0 p-6 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div className="w-11/12 mt-5 lg:mt-0 p-6 flex flex-col items-center bg-[#40407a] border border-gray-200 rounded-lg shadow ">
 
-                            <h5 className="mb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total Buyer</h5>
+                            <h5 className="mb-4 text-2xl font-semibold tracking-tight text-white">Total Buyer</h5>
 
-                            <p className="mb-3 font-normal text-xl text-gray-500 dark:text-gray-400">{buyer}</p>
+                            <p className="mb-3 font-normal text-xl text-white">{buyer}</p>
                         </div>
 
 
