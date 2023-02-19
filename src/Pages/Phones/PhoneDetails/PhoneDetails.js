@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
@@ -7,12 +8,27 @@ const PhoneDetails = () => {
 
     const data = useLoaderData()
 
-    const { productName, productPrice, description, productImage, SellerEmail } = data;
+
+
+    const { _id, productName, productPrice, description, productImage, SellerEmail } = data;
 
     const { user } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
+    // check already booked or not
+    const { data: bookedItems, refetch } = useQuery({
+        queryKey: ['alreadyBooked'],
+        queryFn: async () => {
+            const data = await fetch(`http://localhost:5000/bookedItems`)
+            return data.json();
+        }
+    })
+
+    console.log(bookedItems);
+
+    const isBooked = bookedItems.find(item => item.productId === _id)
+    console.log(isBooked);
 
     const handleBooking = () => {
 
@@ -63,7 +79,14 @@ const PhoneDetails = () => {
                             <p className='text-[#753a3f] font-semibold text-lg'>Price: ${productPrice}</p>
                         </div>
                         <div>
-                            <label htmlFor="my-modal" className=" btn cursor-pointer border-0 text-white  bg-boldGreen hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-3xl text-xs  px-3 py-1.5 text-center ">Add to cart</label>
+                            {
+                                !isBooked ? <>
+                                    <label htmlFor="my-modal" className=" btn cursor-pointer border-0 text-white  bg-boldGreen hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-3xl text-xs  px-3 py-1.5 text-center">Add to cart</label>
+                                </> :
+                                    <>
+                                        <button className=" btn cursor-pointer border-0 text-white  bg-boldGreen hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-3xl text-xs  px-3 py-1.5 text-center" disabled>Booked</button>
+                                    </>
+                            }
 
                             {/* modal  */}
                             <input type="checkbox" id="my-modal" className="modal-toggle" />
