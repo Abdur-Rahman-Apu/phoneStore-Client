@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../../../Context/AuthProvider';
 import CartItem from './CartItem';
@@ -13,7 +13,6 @@ const Cart = () => {
         {
             queryKey: ['bookedItems'],
             queryFn: async () => {
-                console.log("Refetch");
                 const data = await fetch(`http://localhost:5000/user?email=${user?.email}`)
                 return data.json();
             }
@@ -21,7 +20,7 @@ const Cart = () => {
     )
 
 
-    console.log(bookedId.user.booked);
+
 
 
 
