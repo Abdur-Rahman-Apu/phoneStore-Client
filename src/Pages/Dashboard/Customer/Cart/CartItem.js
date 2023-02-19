@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, handleDelete }) => {
 
     const [product, setProduct] = useState(null)
     const navigate = useNavigate()
@@ -16,6 +16,7 @@ const CartItem = ({ item }) => {
     const handlePayBtn = () => {
         navigate("/dashboard/payment", { state: { data: item } })
     }
+
 
 
 
@@ -42,7 +43,7 @@ const CartItem = ({ item }) => {
             <th>
                 <div>
                     <button onClick={handlePayBtn} className="btn border-0 text-white btn-info btn-xs mr-4">Pay</button>
-                    <button className="btn btn-error text-white b btn-xs">Delete</button>
+                    <button onClick={() => handleDelete(product._id)} className="btn btn-error text-white b btn-xs">Delete</button>
                 </div>
             </th>
         </tr>
