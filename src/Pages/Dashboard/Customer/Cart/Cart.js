@@ -18,7 +18,7 @@ const Cart = () => {
     )
     const bookedId = data?.user?.booked;
 
-
+    refetch()
 
     console.log(bookedId);
 
@@ -38,7 +38,7 @@ const Cart = () => {
                 </thead>
                 <tbody>
                     {
-                        bookedId && bookedId?.map(item => <CartItem key={item.projectId} item={item}></CartItem>)
+                        bookedId && bookedId?.map((item, idx) => <CartItem key={idx} item={item}></CartItem>)
                     }
                 </tbody>
 

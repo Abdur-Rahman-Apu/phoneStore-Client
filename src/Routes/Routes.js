@@ -5,6 +5,7 @@ import AllBuyers from "../Pages/Dashboard/Admin/AllBuyer/AllBuyers";
 import AllSellers from "../Pages/Dashboard/Admin/AllSeller/AllSellers";
 import BuyedProduct from "../Pages/Dashboard/Customer/Buyed/BuyedProduct";
 import Cart from "../Pages/Dashboard/Customer/Cart/Cart";
+import Success from "../Pages/Dashboard/Customer/Checkout/Success";
 import Payment from "../Pages/Dashboard/Customer/Payment/Payment";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import AddItem from "../Pages/Dashboard/Seller/AddItem/AddItem";
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment',
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>
+            },
+            {
+                path: '/dashboard/successPayment',
+                element: <PrivateRoute><Success></Success></PrivateRoute>
             },
 
         ]

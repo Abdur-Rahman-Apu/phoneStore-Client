@@ -12,8 +12,8 @@ const CartItem = ({ item }) => {
             .then(data => setProduct(data))
     }, [item?.productId])
 
+    // pay button 
     const handlePayBtn = () => {
-        console.log("Clicked");
         navigate("/dashboard/payment", { state: { data: item } })
     }
 

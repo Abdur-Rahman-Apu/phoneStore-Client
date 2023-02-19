@@ -4,17 +4,19 @@ import { Elements } from '@stripe/react-stripe-js';
 import Checkout from '../Checkout/Checkout';
 import { useLocation } from 'react-router-dom';
 
-const stripePromise = loadStripe(process.env.Stripe_Key);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 
 const Payment = () => {
-    const location = useLocation()
 
+    //get product data
+    const location = useLocation()
     const item = location?.state?.data;
-    console.log(item);
+
+
     return (
         <Elements stripe={stripePromise}>
-            <Checkout></Checkout>
+            <Checkout item={item}></Checkout>
         </Elements>
     );
 };
