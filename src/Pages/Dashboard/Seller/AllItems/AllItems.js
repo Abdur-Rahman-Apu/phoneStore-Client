@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthProvider';
 import useProduct from '../../../../CustomHooks/useProduct';
 import ShowSellerItems from './ShowSellerItems';
@@ -27,9 +28,9 @@ const AllItems = () => {
 
     console.log("userProducts", userProducts);
 
+    const navigate = useNavigate()
 
     // handle advertise
-
     const handleAdvertise = (id) => {
         fetch(`http://localhost:5000/advertise/${id}`, {
             method: 'PUT'
@@ -41,14 +42,35 @@ const AllItems = () => {
                         duration: 4000,
                         position: 'top-center'
                     })
+                    navigate('/')
                 }
+            })
+            .catch(error => {
+                toast.error("Advertise failed", {
+                    duration: 4000,
+                    position: 'top-center'
+                })
             })
     }
 
 
     // delete item
     const handleDelete = (id) => {
-        console.log("id", id);
+        fetch(`http://localhost:5000/deleteItem/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Deleted successfully", {
+                        duration: 4000,
+                        position: 'top-center'
+                    })
+                }
+            })
+            .catch(error => {
+                toast.error("Error got to delete data")
+            })
     }
 
     if (loading) {

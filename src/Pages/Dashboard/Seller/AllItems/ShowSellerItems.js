@@ -27,7 +27,7 @@ const ShowSellerItems = ({ product, handleDelete, handleAdvertise }) => {
             <td>{product?.category}</td>
             <td>{product?.productPrice}</td>
             <th>
-                <button onClick={() => handleAdvertise(product._id)} className="btn bg-boldGreen text-white btn-ghost btn-xs">Advertise</button>
+                <button onClick={() => handleAdvertise(product._id)} className="btn bg-boldGreen text-white btn-ghost btn-xs" disabled={product?.advertise}>Advertise</button>
                 <button onClick={() => handleDelete(product._id)} className="btn btn-error text-white ml-4 btn-xs">Delete</button>
             </th>
         </tr>

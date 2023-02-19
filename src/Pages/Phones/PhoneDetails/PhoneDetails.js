@@ -27,7 +27,7 @@ const PhoneDetails = () => {
 
     console.log(bookedItems);
 
-    const isBooked = bookedItems.find(item => item.productId === _id)
+    const isBooked = bookedItems?.find(item => item.productId === _id)
     console.log(isBooked);
 
     const handleBooking = () => {
