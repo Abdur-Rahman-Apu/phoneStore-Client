@@ -1,60 +1,37 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../../Context/AuthProvider';
+import SoldItem from './SoldItem';
 
 const SoldItems = () => {
+
+    const [soldItems, setSoldItems] = useState([])
+
+    const { user } = useContext(AuthContext)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/allPaid?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setSoldItems(data))
+    }, [])
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
 
                 <thead>
                     <tr>
+                        <th>Payment id</th>
                         <th>Name</th>
                         <th>Image</th>
                         <th>Price</th>
-                        <th>Buyer</th>
+                        <th>Transaction id</th>
+                        <th>Buyer Email</th>
                     </tr>
                 </thead>
                 <tbody>
 
-
-                    <tr>
-
-                        <td>
-
-                            <div>
-                                <div className="font-bold">Hart Hagerty</div>
-
-                            </div>
-
-                        </td>
-                        <td>
-                            <div className="avatar">
-                                <div className="w-24 rounded-xl">
-                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='productImage' />
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Hart Hagerty</div>
-                                    <div className="text-sm opacity-50">United States</div>
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-
-
-
-
-
-
+                    {
+                        soldItems && soldItems?.map((item, idx) => <SoldItem key={idx} item={item}></SoldItem>)
+                    }
                 </tbody>
 
 
