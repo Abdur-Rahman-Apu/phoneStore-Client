@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../Context/AuthProvider';
 import useProduct from '../../../../CustomHooks/useProduct';
 import ShowSellerItems from './ShowSellerItems';
@@ -10,7 +11,7 @@ const AllItems = () => {
     const [products] = useProduct()
 
     const { user, loading, setLoading } = useContext(AuthContext)
-    console.log(products);
+    console.log("All products", products);
 
 
 
@@ -24,7 +25,31 @@ const AllItems = () => {
 
     const userProducts = [].concat(androidData?.filter(data => data?.sellerEmail === user?.email)).concat(iphoneData?.filter(data => data?.sellerEmail === user?.email)).concat(buttonData?.filter(data => data?.sellerEmail === user?.email))
 
-    console.log(userProducts);
+    console.log("userProducts", userProducts);
+
+
+    // handle advertise
+
+    const handleAdvertise = (id) => {
+        fetch(`http://localhost:5000/advertise/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Advertise successfully", {
+                        duration: 4000,
+                        position: 'top-center'
+                    })
+                }
+            })
+    }
+
+
+    // delete item
+    const handleDelete = (id) => {
+        console.log("id", id);
+    }
 
     if (loading) {
         return 'Loading'
@@ -44,11 +69,9 @@ const AllItems = () => {
                 </thead>
                 <tbody>
 
-
                     {
-                        userProducts && userProducts?.map((product, idx) => <ShowSellerItems key={idx} product={product}></ShowSellerItems>)
+                        userProducts && userProducts?.map((product, idx) => <ShowSellerItems key={idx} product={product} handleDelete={handleDelete} handleAdvertise={handleAdvertise}></ShowSellerItems>)
                     }
-
 
                 </tbody>
 

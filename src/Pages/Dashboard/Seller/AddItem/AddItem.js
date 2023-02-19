@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthProvider';
 
 const AddItem = () => {
@@ -8,6 +9,9 @@ const AddItem = () => {
 
     const { user, loading, setLoading } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+
+    // add item button 
     const handleItem = (data) => {
         console.log(data);
 
@@ -36,7 +40,7 @@ const AddItem = () => {
                         category,
                         description,
                         productImage: imgData.data.url,
-                        sellerName: user.displayName
+                        sellerEmail: user.email
                     }
 
 
@@ -55,6 +59,8 @@ const AddItem = () => {
                                     duration: 4000,
                                     position: 'top-center'
                                 })
+
+                                navigate('/dashboard/allItems')
                             } else {
                                 toast.error("Failed to add data", {
                                     duration: 4000,
