@@ -24,7 +24,7 @@ const AllItems = () => {
     console.log("android", androidData)
 
 
-    const userProducts = [].concat(androidData?.filter(data => data?.sellerEmail === user?.email)).concat(iphoneData?.filter(data => data?.sellerEmail === user?.email)).concat(buttonData?.filter(data => data?.sellerEmail === user?.email))
+    let userProducts = [].concat(androidData?.filter(data => data?.sellerEmail === user?.email)).concat(iphoneData?.filter(data => data?.sellerEmail === user?.email)).concat(buttonData?.filter(data => data?.sellerEmail === user?.email))
 
     console.log("userProducts", userProducts);
 
@@ -66,6 +66,7 @@ const AllItems = () => {
                         duration: 4000,
                         position: 'top-center'
                     })
+                    window.location.reload()
                 }
             })
             .catch(error => {
