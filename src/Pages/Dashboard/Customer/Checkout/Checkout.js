@@ -49,7 +49,7 @@ const Checkout = ({ item }) => {
 
     }, [product])
 
-    console.log("Client", clientSecret);
+
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -116,7 +116,29 @@ const Checkout = ({ item }) => {
             setTransactionId(paymentIntent.id)
 
 
+            const paymentInfo = {
+                transactionId: paymentIntent.id,
+                productInfo: product,
+                buyerEmail: user?.email
+            }
 
+            fetch(`http://localhost:5000/paid`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(paymentInfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        navigate('/dashboard/successPayment', { state: { success: "Your payment is done", transactionId: paymentIntent.id } })
+                        localStorage.setItem('Total-cart', localStorage.getItem('Total-cart') - 1)
+                    }
+                })
+
+
+            navigate('/dashboard/successPayment', { state: { success: "Your payment is done", transactionId: paymentIntent.id } })
         }
 
 
