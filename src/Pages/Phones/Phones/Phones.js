@@ -84,7 +84,7 @@ const Phones = () => {
                 pageLinkClassName='page-num'
                 previousLinkClassName='page-num'
                 nextLinkClassName='page-num'
-                activeLinkClassName='active'
+                activeLinkClassName='active-btn'
             />
         </div>
     );

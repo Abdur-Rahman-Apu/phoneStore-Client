@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { json, Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from "../../assets/logo.png"
 import { AuthContext } from '../../Context/AuthProvider';
 import useRole from '../../CustomHooks/useRole';
-import { useQuery } from '@tanstack/react-query';
+import './Navbar.css'
 
 const Navbar = () => {
 
@@ -37,28 +37,34 @@ const Navbar = () => {
 
 
     // menus
-    const { user, logOut, loading, setLoading, getTotalProducts } = useContext(AuthContext)
+    const { user, logOut, loading, setLoading } = useContext(AuthContext)
 
+    let activeStyle = {
+        textDecoration: "underline",
+    }
+
+    let activeClassName = "active-link";
 
 
     const menus = <>
-        <li><Link to='/'>Home</Link></li>
+        <li><NavLink to='/' >Home</NavLink></li>
+
         <li tabIndex={0} className="relative">
-            <Link className="flex  items-center">
+            <NavLink className={`flex items-center`} >
                 Category
                 <FontAwesomeIcon icon={faAngleDown} />
-            </Link>
+            </NavLink>
             <ul className=" bg-boldGreen text-white lg:w-full z-10">
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/1" className='justify-center'>Android</Link></li>
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/2" className='justify-center'>Iphone</Link></li>
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className='justify-center'>Button</Link></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><NavLink to="/category/1" className='justify-center'>Android</NavLink></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><NavLink to="/category/2" className='justify-center'>Iphone</NavLink></li>
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><NavLink to="/category/3" className='justify-center'>Button</NavLink></li>
             </ul>
         </li>
 
         {
-            user && <li><Link to="/dashboard">Dashboard</Link></li>
+            user && <li><NavLink to="/dashboard">Dashboard</NavLink></li>
         }
-        <li><Link>Contact Us</Link></li>
+        <li><NavLink  >Contact Us</NavLink></li>
     </>
 
     //user role
@@ -79,12 +85,13 @@ const Navbar = () => {
                 console.log(data);
                 if (data?.user?.booked) {
                     setCartCount(data?.user?.booked?.length)
+                    localStorage.setItem('Total-cart', cartCount)
                 }
             })
 
 
 
-    }, [user?.email])
+    }, [user?.email, cartCount])
 
 
 
@@ -101,7 +108,7 @@ const Navbar = () => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:text-black">
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:text-black font-bold">
 
                         {
                             menus
@@ -116,7 +123,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 dark:text-black">
+                <ul className="menu menu-horizontal px-1 font-bold  dark:text-black">
                     {
                         menus
                     }
@@ -129,7 +136,7 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost btn-circle mr-2">
                             <div className="indicator">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                <span className="badge badge-sm indicator-item">{localStorage.getItem('Total-cart')}</span>
+                                <span className="badge badge-sm indicator-item">{cartCount}</span>
                             </div>
                         </label>
                     </>

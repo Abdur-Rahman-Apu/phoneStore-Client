@@ -16,7 +16,7 @@
 }
 
 
-.active,
+.active-btn,
 .paginate-container .page-num:hover {
     background-color: #3DB070;
     color: white;
