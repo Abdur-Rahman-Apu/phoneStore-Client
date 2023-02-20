@@ -1,16 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Google from '../../assets/google.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-hot-toast';
+import Lottie from "lottie-react";
+import Login from '../../assets/login.json'
 
 const LogIn = () => {
     const [protect, setProtect] = useState(null)
-
-
-
 
 
     const handleDisplay = (event) => {
@@ -105,8 +103,8 @@ const LogIn = () => {
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl text-boldGreen font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <h1 className="text-5xl text-center text-boldGreen font-bold">Login now!</h1>
+                    <Lottie animationData={Login} loop={true} />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-gray-800 dark:border-gray-700">
                     <form onSubmit={handleLogIn} className="card-body">
