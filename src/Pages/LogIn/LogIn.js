@@ -35,7 +35,7 @@ const LogIn = () => {
 
     //handle Log in
 
-    const { logIn, loading, setLoading, updatePassword } = useContext(AuthContext)
+    const { logIn, loading, setLoading, updatePassword, googleSignIn } = useContext(AuthContext)
 
 
     const navigate = useNavigate()
@@ -43,12 +43,10 @@ const LogIn = () => {
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/'
 
-
     const handleLogIn = (event) => {
 
-        setLoading(true)
-
         event.preventDefault()
+        setLoading(true)
 
         const email = event.target.childNodes[0].querySelector('input').value
         const password = event.target.childNodes[1].querySelector('input').value
@@ -65,6 +63,7 @@ const LogIn = () => {
                             const userInfo = {
                                 email: email
                             }
+
                             fetch('http://localhost:5000/jwt', {
                                 method: 'POST',
                                 headers: {
@@ -93,6 +92,7 @@ const LogIn = () => {
                         })
                 }
             })
+
 
         setLoading(false)
     }
@@ -128,7 +128,7 @@ const LogIn = () => {
                                 <Link to="/reset" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
-                        <div className="form-control mt-6">
+                        <div className="form-control mt-6 relative">
                             <input type="submit" value="Login" className="btn bg-boldGreen border-0" disabled={loading} />
                             {
                                 loading && <div role="status" className='absolute top-1/2 right-1/2 
