@@ -1,0 +1,6 @@
+.banner-img {
+    background-image: url('../../../assets/plane.png');
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
