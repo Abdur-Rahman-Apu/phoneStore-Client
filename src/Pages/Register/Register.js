@@ -5,6 +5,8 @@ import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-hot-toast';
+import Lottie from "lottie-react"
+import animation from "../../assets/registration.json"
 
 const Register = () => {
 
@@ -124,10 +126,10 @@ const Register = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
-            <div className="hero-content flex-col lg:flex-row">
+            <div className="hero-content flex-col lg:flex-row justify-around">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl text-boldGreen font-bold">Register now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <h1 className="text-5xl text-center text-boldGreen font-bold">Register now!</h1>
+                    <Lottie animationData={animation} loop={true} className="h-[500px] w-[500px]" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 dark:bg-gray-800 dark:border-gray-700">
                     <form onSubmit={handleSubmit(handleRegister)} className="card-body">
