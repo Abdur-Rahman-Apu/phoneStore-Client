@@ -43,6 +43,8 @@ const LogIn = () => {
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/'
 
+
+    // log in using email & password 
     const handleLogIn = (event) => {
 
         event.preventDefault()
@@ -97,6 +99,8 @@ const LogIn = () => {
         setLoading(false)
     }
 
+
+
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
             <div className="hero-content flex-col lg:flex-row">
@@ -141,13 +145,7 @@ const LogIn = () => {
                                 </div>
                             }
                         </div>
-                        <div className="divider dark:text-white">OR</div>
-                        <div className="form-control">
-                            <button className="btn bg-white shadow-md text-black border-0 hover:text-white">
-                                <img className='img-fluid h-8' src={Google} alt="google logo" />
-                                Google
-                            </button>
-                        </div>
+
 
                         <p className='text-center dark:text-white'>Are you a new user? <Link to="/register" className='text-boldGreen font-bold'>Register</Link></p>
                     </form>
