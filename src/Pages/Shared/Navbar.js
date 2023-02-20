@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { json, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from "../../assets/logo.png"
@@ -37,7 +37,7 @@ const Navbar = () => {
 
 
     // menus
-    const { user, logOut, loading, setLoading } = useContext(AuthContext)
+    const { user, logOut, loading, setLoading, getTotalProducts } = useContext(AuthContext)
 
 
 
@@ -72,6 +72,7 @@ const Navbar = () => {
     console.log("Before render");
 
     useEffect(() => {
+
         fetch(`http://localhost:5000/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
@@ -85,8 +86,9 @@ const Navbar = () => {
 
     }, [user?.email])
 
-    console.log(cartCount);
-    localStorage.setItem('Total-cart', cartCount)
+
+
+
 
     setLoading(false)
     if (loading) {
@@ -120,7 +122,8 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className="navbar-end dropdown dropdown-end flex flex-end">
+
+            <div className="navbar-end ">
                 {
                     role && role === 'Customer' && <>
                         <label tabIndex={0} className="btn btn-ghost btn-circle mr-2">
@@ -132,39 +135,39 @@ const Navbar = () => {
                     </>
                 }
 
-                {
-                    user ? <>
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={user.photoURL} alt="user img" />
-                            </div>
-                        </label>
-                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-32 top-[80%]">
-                            <li>
-                                <p className='text-base font-bold text-boldGreen'>{user.displayName}</p>
-                            </li>
-                            <li>
-                                <Link className="justify-between">
-                                    Profile
-                                    <span className="badge text-[7px]">{role}</span>
-                                </Link>
-                            </li>
-                            <li><button onClick={() => {
-                                localStorage.removeItem('Total-cart')
-                                setCartCount(0)
+                <div className='dropdown dropdown-end flex flex-end'>
+                    {
+                        user ? <>
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user.photoURL} alt="user img" />
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36 top-[80%]">
+                                <li className='w-full '>
+                                    <p className='text-base font-bold text-boldGreen'>{user.displayName}</p>
+                                </li>
+                                <li className='w-full '>
+                                    <Link className="justify-between">
+                                        Profile
+                                        <span className="badge text-[7px]">{role}</span>
+                                    </Link>
+                                </li>
+                                <li className='w-full '><button onClick={() => {
+                                    localStorage.removeItem('Total-cart')
+                                    setCartCount(0)
 
-                                logOut()
-
-
-
-
-                            }}>Logout</button></li>
-                        </ul>
-                    </> :
-                        <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
-                }
+                                    logOut()
 
 
+
+
+                                }}>Logout</button></li>
+                            </ul>
+                        </> :
+                            <Link to="/login" className="btn rounded-full bg-boldGreen border-0 text-xs md:text-sm">Log in</Link>
+                    }
+                </div>
 
             </div>
 

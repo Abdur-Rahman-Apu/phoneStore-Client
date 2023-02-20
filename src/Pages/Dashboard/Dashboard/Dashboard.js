@@ -5,6 +5,8 @@ import useRole from '../../../CustomHooks/useRole';
 
 const Dashboard = () => {
 
+    const { loading, setLoading } = useContext(AuthContext)
+
     const [role] = useRole()
 
 

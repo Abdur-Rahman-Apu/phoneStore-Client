@@ -3,11 +3,13 @@ import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../../../Context/AuthProvider';
 import CartItem from './CartItem';
 import { toast } from 'react-hot-toast';
+import Lottie from "lottie-react";
+import Load from '../../../../assets/load.json'
 
 
 const Cart = () => {
 
-    const { user, loading } = useContext(AuthContext)
+    const { user, loading, setLoading } = useContext(AuthContext)
 
     const { data: bookedId, refetch } = useQuery(
         {
@@ -21,15 +23,9 @@ const Cart = () => {
 
 
 
-
-
-
-
-
-
     //delete btn
     const handleDelete = (id) => {
-
+        setLoading(true)
 
         fetch(`http://localhost:5000/deleteCartItem?productId=${id}&email=${user?.email}`, {
             method: 'DELETE'
@@ -42,18 +38,23 @@ const Cart = () => {
                         position: 'top-center'
                     })
 
+                    localStorage.setItem('Total-cart', localStorage.getItem('Total-cart') - 1)
+
                     refetch()
+                    window.location.reload()
 
                 }
             })
 
-
+        setLoading(false)
 
     }
 
 
     if (loading) {
-        return "Loading"
+        return <div className='h-[300px]'>
+            <Lottie animationData={Load} loop={true} />
+        </div>
     }
     return (
         <div className="overflow-x-auto w-full">
