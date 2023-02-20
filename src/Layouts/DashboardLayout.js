@@ -3,6 +3,8 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import useRole from '../CustomHooks/useRole';
 import Navbar from '../Pages/Shared/Navbar';
+import Lottie from "lottie-react";
+import Load from '../assets/load.json'
 
 const DashboardLayout = () => {
     const { user, loading } = useContext(AuthContext)
@@ -35,7 +37,10 @@ const DashboardLayout = () => {
     }
 
     if (loading) {
-        return <><div>Loading...</div></>
+        return <div className='h-[500px] w-[500px] mx-auto'>
+            <Lottie animationData={Load} loop={true} />
+            <p className='text-center text-3xl font-bold text-sky-400'>Wait loading...</p>
+        </div>
     }
     return (
         <div>
