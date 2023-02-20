@@ -18,25 +18,25 @@ const Contact = () => {
                             <label className="label">
                                 <span className="label-text font-bold text-black">Name</span>
                             </label>
-                            <input type="text" placeholder="Enter your name" className="input input-bordered" />
+                            <input type="text" name="user_name" placeholder="Enter your name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-black">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input type="text" name="user_email" placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-black">Subject</span>
                             </label>
-                            <input type="text" placeholder="Subject of message" className="input input-bordered" />
+                            <input type="text" name="subject" placeholder="Subject of message" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-black">Message</span>
                             </label>
-                            <textarea className="textarea textarea-bordered" placeholder="Your message"></textarea>
+                            <textarea name="message" className="textarea textarea-bordered" placeholder="Your message"></textarea>
 
                         </div>
                         <div className="form-control mt-6">
