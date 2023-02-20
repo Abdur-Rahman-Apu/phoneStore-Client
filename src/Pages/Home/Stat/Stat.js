@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Stat = () => {
 
     const [customers, setCustomers] = useState(0)
     const [sellers, setSellers] = useState(0)
     const [orders, setOrders] = useState(0)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                const sellerLength = data.seller.length
+                const buyerLength = data.customer.length
+
+                setSellers(sellerLength)
+                setCustomers(buyerLength)
+            })
+
+
+        fetch(`http://localhost:5000/allPaidItems`)
+            .then(res => res.json())
+            .then(data => setOrders(data.count))
+    }, [])
     return (
         <div className='w-11/12 mx-auto mb-24 min-h-[200px] '>
             <div className="stats grid-flow-row shadow w-full dark:bg-[#1F2937] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

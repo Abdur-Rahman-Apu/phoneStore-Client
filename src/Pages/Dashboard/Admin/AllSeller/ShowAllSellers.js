@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShowAllSellers = ({ seller }) => {
+const ShowAllSellers = ({ seller, handleDeleteSeller }) => {
     return (
         <tr>
 
@@ -21,7 +21,7 @@ const ShowAllSellers = ({ seller }) => {
 
             <td>{seller?.email}</td>
             <th>
-                <button className="btn btn-error btn-xs">Delete</button>
+                <button onClick={() => handleDeleteSeller(seller._id)} className="btn btn-error btn-xs">Delete</button>
             </th>
         </tr>
     );
