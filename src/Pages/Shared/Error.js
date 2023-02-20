@@ -1,10 +1,21 @@
 import React from 'react';
+import Lottie from "lottie-react";
+import ErrorAnimation from '../../assets/error.json'
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Error = () => {
+
+
+
     return (
-        <div>
-            <div>404ERROR</div>
-        </div>
+        <>
+            <Navbar></Navbar>
+            <div>
+                <Lottie animationData={ErrorAnimation} loop={true} className="h-[500px]" />;
+            </div>
+            <Footer></Footer>
+        </>
     );
 };
 
