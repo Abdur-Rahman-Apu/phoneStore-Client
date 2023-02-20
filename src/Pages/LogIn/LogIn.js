@@ -102,7 +102,7 @@ const LogIn = () => {
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
             <div className="hero-content flex-col lg:flex-row">
-                <div className="text-center lg:text-left">
+                <div className="text-center lg:text-left ">
                     <h1 className="text-5xl text-center text-boldGreen font-bold">Login now!</h1>
                     <Lottie animationData={Login} loop={true} />
                 </div>

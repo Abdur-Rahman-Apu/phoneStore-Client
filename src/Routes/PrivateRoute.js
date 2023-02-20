@@ -8,13 +8,19 @@ const PrivateRoute = ({ children }) => {
 
     const location = useLocation()
 
+    console.log(user);
+
     if (user) {
+        console.log("User ase");
         return children;
+    } else if (!user) {
+        console.log("User nai", user);
+        return (
+            <Navigate to='/login' state={{ from: location }} />
+        );
     }
 
-    return (
-        <Navigate to='/login' state={{ from: location }} />
-    );
+
 };
 
 export default PrivateRoute;

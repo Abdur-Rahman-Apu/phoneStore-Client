@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Lottie from "lottie-react";
+import Load from "../../../assets/load.json"
+import { AuthContext } from '../../../Context/AuthProvider';
+
 
 const Phone = ({ item }) => {
+
+    const { user, loading } = useContext(AuthContext)
     console.log(item);
+
+    if (loading) {
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
+    }
     return (
 
         <div className="w-11/12 h-[500px] flex-col  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

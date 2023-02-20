@@ -1,16 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../../Context/AuthProvider';
 import Category from '../Category/Category';
+import Lottie from "lottie-react";
+import Load from "../../../../assets/load.json"
+
 
 const Categories = () => {
+    const { loading } = useContext(AuthContext)
 
     const [error, setError] = useState("")
     const [categories, setCategories] = useState([])
     useEffect(() => {
+
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(err => setError(err.message))
     }, [])
+
+    if (loading) {
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
+    }
 
     return (
         <div>

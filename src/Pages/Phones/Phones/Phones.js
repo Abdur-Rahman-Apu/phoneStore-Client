@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 import useProduct from '../../../CustomHooks/useProduct';
 import Phone from '../Phone/Phone';
+import Lottie from "lottie-react";
+import Load from "../../../assets/load.json"
 
 const Phones = () => {
     const { id } = useParams()
     const [products] = useProduct()
+
+    const { user, loading } = useContext(AuthContext)
 
     console.log(products);
     console.log(id);
@@ -30,6 +35,11 @@ const Phones = () => {
     }
     console.log(items);
 
+    if (loading) {
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
+    }
 
     return (
         <div>

@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../../Context/AuthProvider';
+import Lottie from "lottie-react";
+import Load from "../../../../assets/load.json"
 
 const Category = ({ category }) => {
+    const { loading } = useContext(AuthContext)
+
     const { categoryId, categoryName, categoryImg } = category;
+
+
+    if (loading) {
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
+    }
+
     return (
         <div className="card lg:w-96 bg-base-100 shadow-xl dark:bg-[#1F2937] mt-10  lg:mt-0">
             <figure><img src={categoryImg} className="img-fluid" alt="Shoes" /></figure>
