@@ -16,6 +16,7 @@ import LogIn from "../Pages/LogIn/LogIn";
 import PasswordReset from "../Pages/PasswordReset/PasswordReset";
 import PhoneDetails from "../Pages/Phones/PhoneDetails/PhoneDetails";
 import Phones from "../Pages/Phones/Phones/Phones";
+import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
 
 import Error from "../Pages/Shared/Error";
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             {
                 path: '/reset',
                 element: <PasswordReset></PasswordReset>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path: '/phoneDetails/:id',

@@ -148,7 +148,7 @@ const Navbar = () => {
                                     <p className='text-base font-bold text-boldGreen'>{user.displayName}</p>
                                 </li>
                                 <li className='w-full '>
-                                    <Link className="justify-between">
+                                    <Link to="/profile" className="justify-between">
                                         Profile
                                         <span className="badge text-[7px]">{role}</span>
                                     </Link>
