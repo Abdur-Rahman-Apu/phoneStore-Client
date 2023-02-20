@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShowAllBuyers = ({ buyer }) => {
+const ShowAllBuyers = ({ buyer, handleBuyerDelete }) => {
     console.log(buyer);
     return (
         <tr>
@@ -24,7 +24,7 @@ const ShowAllBuyers = ({ buyer }) => {
 
             <td>{buyer?.email}</td>
             <th>
-                <button onClick={() => { handleBuyerDelete() }} className="btn btn-error btn-xs">Delete</button>
+                <button onClick={() => { handleBuyerDelete(buyer._id) }} className="btn btn-error btn-xs">Delete</button>
             </th>
         </tr>
     );

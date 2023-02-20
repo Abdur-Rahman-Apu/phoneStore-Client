@@ -1,15 +1,40 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import ShowAllBuyers from './ShowAllBuyers';
 
 const AllBuyers = () => {
 
-    const [buyers, setBuyers] = useState([])
+    // const [buyers, setBuyers] = useState([])
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/users`)
+    const { data: buyers, refetch } = useQuery({
+        queryKey: ['deleteBuyers'],
+        queryFn: async () => {
+            const response = await fetch(`http://localhost:5000/users`);
+            return response.json()
+        }
+    })
+
+
+
+
+    //delete buyer 
+    const handleBuyerDelete = (id) => {
+
+        fetch(`http://localhost:5000/deleteBuyer/${id}`, {
+            method: 'DELETE'
+        })
             .then(res => res.json())
-            .then(data => setBuyers(data?.customer))
-    }, [])
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Deleted successfully", {
+                        duration: 4000,
+                        position: 'top-center'
+                    })
+                    refetch()
+                }
+            })
+    }
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
@@ -26,12 +51,8 @@ const AllBuyers = () => {
 
 
                     {
-                        buyers && buyers?.map((buyer, idx) => <ShowAllBuyers key={idx} buyer={buyer}></ShowAllBuyers>)
+                        buyers?.customer && buyers?.customer?.map((buyer, idx) => <ShowAllBuyers key={idx} buyer={buyer} handleBuyerDelete={handleBuyerDelete}></ShowAllBuyers>)
                     }
-
-
-
-
 
 
                 </tbody>
