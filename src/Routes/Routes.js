@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
+import Contact from "../Pages/Contact/Contact";
 import AllBuyers from "../Pages/Dashboard/Admin/AllBuyer/AllBuyers";
 import AllSellers from "../Pages/Dashboard/Admin/AllSeller/AllSellers";
 import BuyedProduct from "../Pages/Dashboard/Customer/Buyed/BuyedProduct";
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             },
             {
                 path: '/phoneDetails/:id',
