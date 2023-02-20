@@ -5,6 +5,8 @@ import useProduct from '../../../CustomHooks/useProduct';
 import Phone from '../Phone/Phone';
 import Lottie from "lottie-react";
 import Load from "../../../assets/load.json"
+import ReactPaginate from 'react-paginate';
+import './Phones.css'
 
 const Phones = () => {
     const { id } = useParams()
@@ -33,7 +35,27 @@ const Phones = () => {
         category = "Button"
         products ? items = products?.button : items = null
     }
-    console.log(items);
+
+
+
+    const [itemOffset, setItemOffset] = useState(0);
+
+    const itemsPerPage = 3
+
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    const currentItems = items?.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(items?.length / itemsPerPage);
+
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % items?.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+
+    }
 
     if (loading) {
         return <>
@@ -47,9 +69,23 @@ const Phones = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 justify-items-center'>
                 {
-                    items && items?.map((item, idx) => <Phone key={idx} item={item}></Phone>)
+                    currentItems && currentItems?.map((item, idx) => <Phone key={idx} item={item} ></Phone>)
                 }
             </div>
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel="Next"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="Previous"
+                renderOnZeroPageCount={null}
+                containerClassName="paginate-container"
+                pageLinkClassName='page-num'
+                previousLinkClassName='page-num'
+                nextLinkClassName='page-num'
+                activeLinkClassName='active'
+            />
         </div>
     );
 };

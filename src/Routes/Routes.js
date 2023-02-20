@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <PrivateRoute><Phones></Phones></PrivateRoute>
+                element: <PrivateRoute><Phones></Phones></PrivateRoute>,
             },
             {
                 path: '/login',

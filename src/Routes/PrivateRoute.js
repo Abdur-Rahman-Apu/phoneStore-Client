@@ -10,10 +10,13 @@ const PrivateRoute = ({ children }) => {
 
     console.log(user);
 
+
+
     if (user) {
         console.log("User ase");
         return children;
-    } else if (!user) {
+    }
+    if (!user) {
         console.log("User nai", user);
         return (
             <Navigate to='/login' state={{ from: location }} />
