@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ShowAllBuyers = ({ buyer, handleBuyerDelete }) => {
-    console.log(buyer);
+
     return (
         <tr>
 
