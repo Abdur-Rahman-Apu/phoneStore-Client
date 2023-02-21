@@ -7,11 +7,9 @@ import Lottie from "lottie-react";
 import Load from '../assets/load.json'
 
 const DashboardLayout = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { loading } = useContext(AuthContext)
 
     const [role] = useRole()
-
-    console.log(role);
 
     let menus;
 
