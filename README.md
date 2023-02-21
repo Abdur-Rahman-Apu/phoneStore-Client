@@ -50,3 +50,7 @@ Phone store is a website of buying and selling phone.
 
 **Server:** Node, Express, Firebase, MongoDB, ImageBB
 
+## Admin 
+Email: abdurrahman@gmail.com
+
+password: 123456
