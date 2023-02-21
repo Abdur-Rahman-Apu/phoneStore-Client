@@ -8,7 +8,7 @@ const PhoneDetails = () => {
 
     const data = useLoaderData()
 
-    const { _id, productName, productPrice, description, productImage } = data;
+    const { _id, category, productName, productPrice, productImage, displaySize, ram, rom, sim, battery } = data;
 
     const { user } = useContext(AuthContext)
 
@@ -61,14 +61,54 @@ const PhoneDetails = () => {
                     </div>
 
                     <div className='px-16 py-11'>
-                        <div >
-                            <h4 className='text-2xl font-semibold'>{productName}</h4>
-
+                        <div className='flex justify-between'>
+                            <h4 className='text-2xl text-[#B98776] font-semibold'>{productName}</h4>
+                            <p>{category}</p>
                         </div>
 
-                        <div>
-                            <p className='text-justify my-10 font-semibold '>{description}</p>
+                        <div className="overflow-x-auto my-10">
+                            <table className="table w-full">
+
+                                <thead className=' text-[#B98776]  '>
+                                    <tr className='text-2xl'>
+                                        <th>Category</th>
+                                        <th>Value</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>Display Size</td>
+                                        <td>{displaySize}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td >RAM</td>
+                                        <td>{ram}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td >ROM</td>
+                                        <td>{rom}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Sim</td>
+                                        <td>{sim}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Battery</td>
+                                        <td>{battery}</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
                         </div>
+
+
 
                         <div className='my-10'>
                             <p className='text-[#753a3f] font-semibold text-lg'>Price: ${productPrice}</p>

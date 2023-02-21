@@ -28,7 +28,7 @@ const Phone = ({ item }) => {
                 <h5 className="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{item?.productName}</h5>
 
                 <div className="flex items-center justify-between">
-                    <span className="text-3xl font-bold text-boldGreen dark:text-white">$599</span>
+                    <span className="text-3xl font-bold text-boldGreen dark:text-white">${item?.productPrice}</span>
 
                     <Link to={`/phoneDetails/${item?._id}`} className="inline-flex items-center  text-white bg-boldGreen hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-boldGreen dark:hover:bg-green-700 dark:focus:ring-blue-800">Details
 
