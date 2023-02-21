@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthProvider';
@@ -7,22 +7,13 @@ import ShowSellerItems from './ShowSellerItems';
 
 const AllItems = () => {
 
-
-
     const [products] = useProduct()
 
-    const { user, loading, setLoading } = useContext(AuthContext)
-    console.log("All products", products);
-
-
-
+    const { user, loading } = useContext(AuthContext)
 
     const androidData = products?.android;
     const iphoneData = products?.iphone;
     const buttonData = products?.button;
-
-    console.log("android", androidData)
-
 
     let userProducts = [].concat(androidData?.filter(data => data?.sellerEmail === user?.email)).concat(iphoneData?.filter(data => data?.sellerEmail === user?.email)).concat(buttonData?.filter(data => data?.sellerEmail === user?.email))
 

@@ -12,7 +12,7 @@ const SoldItems = () => {
         fetch(`http://localhost:5000/allPaid?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setSoldItems(data))
-    }, [])
+    }, [user?.email])
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">

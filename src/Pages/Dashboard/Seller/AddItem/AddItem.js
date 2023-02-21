@@ -13,13 +13,11 @@ const AddItem = () => {
 
     // add item button 
     const handleItem = (data) => {
-        console.log(data);
 
         const img = data.image[0]
         const { name, price, description, category, display, ram, rom, sim, battery } = data;
 
         const uri = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgBBkey}`
-        console.log(uri);
 
         const formData = new FormData()
         formData.append('image', img)

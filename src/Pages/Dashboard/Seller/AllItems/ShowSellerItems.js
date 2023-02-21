@@ -2,9 +2,6 @@ import React from 'react';
 
 const ShowSellerItems = ({ product, handleDelete, handleAdvertise }) => {
 
-    console.log(product);
-
-
     return (
         <tr>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SoldItem = ({ item }) => {
-    console.log(item);
+
     return (
         <tr>
 
