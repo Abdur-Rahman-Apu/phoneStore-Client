@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-hot-toast';
 import ShowAllSellers from './ShowAllSellers';
 
 const AllSellers = () => {
-    const [sellers, setSellers] = useState([])
 
     const { data, refetch } = useQuery({
         queryKey: ['sellers'],
@@ -13,14 +12,6 @@ const AllSellers = () => {
             return data.json()
         }
     })
-
-
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/users`)
-    //         .then(res => res.json())
-    //         .then(data => setSellers(data?.seller))
-    // }, [])
 
     const handleDeleteSeller = (id) => {
 
@@ -53,15 +44,9 @@ const AllSellers = () => {
                 </thead>
                 <tbody>
 
-
                     {
                         data?.seller && data?.seller?.map((seller, idx) => <ShowAllSellers key={idx} seller={seller} handleDeleteSeller={handleDeleteSeller}></ShowAllSellers>)
                     }
-
-
-
-
-
 
                 </tbody>
 
