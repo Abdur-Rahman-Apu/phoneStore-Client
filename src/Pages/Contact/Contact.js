@@ -26,12 +26,6 @@ const Contact = () => {
         e.target.reset()
     }
 
-    // if (loading) {
-    //     return <div className='h-[500px] w-[500px] mx-auto'>
-    //         <Lottie animationData={Load} loop={true} />
-    //         <p className='text-center text-3xl font-bold text-sky-400'>Wait loading...</p>
-    //     </div>
-    // }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">

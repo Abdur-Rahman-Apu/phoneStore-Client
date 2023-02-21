@@ -1,11 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-hot-toast';
 import ShowAllBuyers from './ShowAllBuyers';
 
 const AllBuyers = () => {
-
-    // const [buyers, setBuyers] = useState([])
 
     const { data: buyers, refetch } = useQuery({
         queryKey: ['deleteBuyers'],
@@ -14,9 +12,6 @@ const AllBuyers = () => {
             return response.json()
         }
     })
-
-
-
 
     //delete buyer 
     const handleBuyerDelete = (id) => {
@@ -35,6 +30,7 @@ const AllBuyers = () => {
                 }
             })
     }
+
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
