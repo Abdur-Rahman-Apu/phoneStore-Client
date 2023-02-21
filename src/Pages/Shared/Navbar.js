@@ -61,7 +61,7 @@ const Navbar = () => {
         <li><Link className={`${pathName === '/contact' ? 'active' : ''}`} to='/contact' >Contact Us</Link></li>
 
         {
-            user && <li><Link className={`${pathName === '/dashboard' ? 'active' : ''}`} to="/dashboard">Dashboard</Link></li>
+            user && <li><Link className={`${pathName.match('/dashboard') ? 'active' : ''}`} to="/dashboard">Dashboard</Link></li>
         }
 
     </>

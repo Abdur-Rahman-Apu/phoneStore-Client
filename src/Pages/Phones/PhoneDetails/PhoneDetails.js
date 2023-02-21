@@ -52,7 +52,7 @@ const PhoneDetails = () => {
     return (
         <div className='my-16'>
             <div className='flex flex-col md:flex-row'>
-                <div className='md:basis-[55%] px-4'>
+                <div className='md:basis-[55%] flex justify-center items-center'>
                     <img className='image-full object-cover' src={productImage} alt="productImage" />
                 </div>
                 <div className='md:basis-[45%] bg-gray-100 rounded-sm mt-10 md:mt-0'>
