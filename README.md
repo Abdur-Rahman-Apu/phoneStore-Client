@@ -1,70 +1,52 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Phone store
 
-## Available Scripts
+Phone store is a website of buying and selling phone.
 
-In the project directory, you can run:
 
-### `npm start`
+### Live website link: [https://phone-store-de866.web.app/)
+![Logo](https://i.ibb.co/t8jkvLv/pic.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- The user can buy three categories phones
+- Light/dark mode toggle
+- Seller can add and delete phone
+- Buyer can add to cart product, delete and check bought products in the dashboard.
+- Admin can remove users
+- Stripe payment method is used
+- Lottie animation is used
+- Password hide and show functionality is added in the log in and register page
+- Pagination is added
+- React-hook-form is used
+- Fully responsive
+- Fullscreen mode
+- Cross platform
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Home page](https://i.ibb.co/HB4LSNW/screencapture-phone-store-de866-web-app-2023-02-21-10-21-27.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Log in page](https://i.ibb.co/wz8c8Ls/screencapture-phone-store-de866-web-app-login-2023-02-21-10-26-34.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Register page](https://i.ibb.co/xMr8N04/screencapture-phone-store-de866-web-app-register-2023-02-21-10-26-46.png)
 
-### `npm run eject`
+![Contact page](https://i.ibb.co/K7WfgR2/screencapture-phone-store-de866-web-app-contact-2023-02-21-10-23-47.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Profile page](https://i.ibb.co/Xt43dQK/screencapture-phone-store-de866-web-app-profile-2023-02-21-10-26-19.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Dahboard page](https://i.ibb.co/prXJTtQ/screencapture-phone-store-de866-web-app-dashboard-2023-02-21-10-24-03.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+![Toggle page](https://i.ibb.co/qFMZVDT/screencapture-phone-store-de866-web-app-dashboard-2023-02-21-10-27-22.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Seller page](https://i.ibb.co/ZmSVDdc/screencapture-phone-store-de866-web-app-dashboard-add-Item-2023-02-21-10-27-34.png)
+## Tech Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Client:** TailwindCSS, ES6, JavaScript, DaisyUi, React, TanStackQuery, React-FontAwesome, Lottie, React-paginate, EmailJS, React-hook-form, Stripe, React-router, React-hot-toast, Swiper.js
 
-### Code Splitting
+**Server:** Node, Express, Firebase, MongoDB, ImageBB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
