@@ -1,20 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 import useProduct from '../../../CustomHooks/useProduct';
 import useRole from '../../../CustomHooks/useRole';
 
 const Dashboard = () => {
 
-    const { loading, setLoading } = useContext(AuthContext)
-
     const [role] = useRole()
-
 
     //seller
     let availableItems = 0
-
-
-
 
     //buyer 
     const [totalCart, setTotalCart] = useState(0)
@@ -48,8 +42,6 @@ const Dashboard = () => {
         const buttonData = products?.button;
 
 
-
-
         let userProducts = [].concat(androidData?.filter(data => data?.sellerEmail === user?.email)).concat(iphoneData?.filter(data => data?.sellerEmail === user?.email)).concat(buttonData?.filter(data => data?.sellerEmail === user?.email))
 
         const length = userProducts.length
@@ -62,7 +54,7 @@ const Dashboard = () => {
         fetch(`http://localhost:5000/allPaid?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 const paidLength = data.length
                 setSoldItems(paidLength)
 
@@ -77,8 +69,6 @@ const Dashboard = () => {
             })
 
     }
-
-
 
     if (role === 'Admin') {
 
@@ -166,7 +156,6 @@ const Dashboard = () => {
 
                             <p className="mb-3 font-normal text-xl text-white">{buyer}</p>
                         </div>
-
 
                     </div>
                 </>
