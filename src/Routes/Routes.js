@@ -19,7 +19,6 @@ import PhoneDetails from "../Pages/Phones/PhoneDetails/PhoneDetails";
 import Phones from "../Pages/Phones/Phones/Phones";
 import Profile from "../Pages/Profile/Profile";
 import Register from "../Pages/Register/Register";
-
 import Error from "../Pages/Shared/Error";
 import PrivateRoute from "./PrivateRoute";
 

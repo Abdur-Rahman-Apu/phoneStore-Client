@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from "../../assets/logo.png"
@@ -45,26 +45,32 @@ const Navbar = () => {
 
     let activeClassName = "active-link";
 
+    const pathName = useLocation().pathname;
+    console.log(pathName);
+
 
     const menus = <>
-        <li><NavLink to='/' >Home</NavLink></li>
+        <li><Link to='/' className={`${pathName === '/' ? 'active' : ''}`} >Home</Link></li>
 
         <li tabIndex={0} className="relative">
-            <NavLink className={`flex items-center`} >
+            <Link className={`flex items-center ${pathName.match('/category/') ? 'active' : ''}`} >
                 Category
                 <FontAwesomeIcon icon={faAngleDown} />
-            </NavLink>
+            </Link>
             <ul className=" bg-boldGreen text-white lg:w-full z-10">
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><NavLink to="/category/1" className='justify-center'>Android</NavLink></li>
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><NavLink to="/category/2" className='justify-center'>Iphone</NavLink></li>
-                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><NavLink to="/category/3" className='justify-center'>Button</NavLink></li>
+
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/1" className={`justify-center ${pathName === '/category/1' ? 'bg-black' : ''}`}>Android</Link></li>
+
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/2" className={`justify-center ${pathName === '/category/2' ? 'bg-black' : ''}`}>Iphone</Link></li>
+
+                <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className={`justify-center ${pathName === '/category/3' ? 'bg-black' : ''}`}>Button</Link></li>
             </ul>
         </li>
 
         {
-            user && <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+            user && <li><Link className={`${pathName === '/dashboard' ? 'active' : ''}`} to="/dashboard">Dashboard</Link></li>
         }
-        <li><NavLink to='/contact' >Contact Us</NavLink></li>
+        <li><Link className={`${pathName === '/contact' ? 'active' : ''}`} to='/contact' >Contact Us</Link></li>
     </>
 
     //user role
