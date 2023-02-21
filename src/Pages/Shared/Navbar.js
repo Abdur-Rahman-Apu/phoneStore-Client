@@ -58,11 +58,13 @@ const Navbar = () => {
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className={`justify-center ${pathName === '/category/3' ? 'bg-black' : ''}`}>Button</Link></li>
             </ul>
         </li>
-        <li><Link className={`${pathName === '/contact' ? 'active' : ''}`} to='/contact' >Contact Us</Link></li>
+
 
         {
             user && <li><Link className={`${pathName.match('/dashboard') ? 'active' : ''}`} to="/dashboard">Dashboard</Link></li>
         }
+
+        <li><Link className={`${pathName === '/contact' ? 'active' : ''}`} to='/contact' >Contact Us</Link></li>
 
     </>
 
@@ -136,14 +138,14 @@ const Navbar = () => {
                                     <img src={user.photoURL} alt="user img" />
                                 </div>
                             </label>
-                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36 top-[80%]">
+                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 top-[80%]">
                                 <li className='w-full '>
                                     <p className='text-base font-bold text-boldGreen'>{user.displayName}</p>
                                 </li>
                                 <li className='w-full '>
                                     <Link to="/profile" className="justify-between">
                                         Profile
-                                        <span className="badge text-[7px]">{role}</span>
+                                        <span className="badge text-[12px]">{role}</span>
                                     </Link>
                                 </li>
                                 <li className='w-full '><button onClick={() => {
