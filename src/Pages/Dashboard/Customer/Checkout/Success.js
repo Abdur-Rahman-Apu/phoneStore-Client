@@ -7,6 +7,7 @@ const Success = () => {
 
     const location = useLocation()
 
+
     return (
         <div className='flex justify-center items-center min-h-[60%]'>
             <div className='border-1 shadow-sm bg-gray-100 w-[600px] p-10 rounded-lg'>
