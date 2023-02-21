@@ -6,8 +6,6 @@ import Footer from './Footer';
 
 const Error = () => {
 
-
-
     return (
         <>
             <Navbar></Navbar>

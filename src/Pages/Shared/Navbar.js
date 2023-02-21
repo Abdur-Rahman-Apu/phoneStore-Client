@@ -40,8 +40,6 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
 
     const pathName = useLocation().pathname;
-    console.log(pathName);
-
 
     const menus = <>
         <li><Link to='/' className={`${pathName === '/' ? 'active' : ''}`} >Home</Link></li>
@@ -73,16 +71,12 @@ const Navbar = () => {
 
     const [cartCount, setCartCount] = useState(0)
 
-
-
-
-
     useEffect(() => {
 
         fetch(`http://localhost:5000/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 if (data?.user?.booked) {
                     setCartCount(data?.user?.booked?.length)
                     localStorage.setItem('Total-cart', cartCount)
