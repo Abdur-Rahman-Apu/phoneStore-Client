@@ -21,8 +21,6 @@ const Cart = () => {
         }
     )
 
-
-
     //delete btn
     const handleDelete = (id) => {
         setLoading(true)
@@ -41,6 +39,7 @@ const Cart = () => {
                     localStorage.setItem('Total-cart', localStorage.getItem('Total-cart') - 1)
 
                     refetch()
+
                     window.location.reload()
 
                 }

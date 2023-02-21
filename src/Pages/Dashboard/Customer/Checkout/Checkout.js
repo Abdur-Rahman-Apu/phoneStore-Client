@@ -9,20 +9,16 @@ const Checkout = ({ item }) => {
 
     const navigate = useNavigate()
 
-    console.log("item", item);
-
     //get product
     const [product, setProduct] = useState([])
     const [processing, setProcessing] = useState('')
-    const [success, setSuccess] = useState('')
-    const [transactionId, setTransactionId] = useState('')
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/product/${item?.productId}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [item?.productId])
-
 
 
     const stripe = useStripe();
@@ -52,43 +48,36 @@ const Checkout = ({ item }) => {
 
 
     const handleSubmit = async (event) => {
-        // Block native form submission.
+
         setErrors('')
         event.preventDefault();
 
         if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            // form submission until Stripe.js has loaded.
+
             return;
         }
 
-        // Get a reference to a mounted CardElement. Elements knows how
-        // to find your CardElement because there can only ever be one of
-        // each type of element.
         const card = elements.getElement(CardElement);
 
         if (card == null) {
             return;
         }
 
-
-
-        // Use your card Element with other Stripe.js APIs
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
 
         if (error) {
-            console.log('[error]', error);
+
             setErrors(error.message)
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+
             setErrors('')
         }
 
         // confirm card payment 
-        setSuccess('')
+
         setProcessing(true)
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -104,17 +93,13 @@ const Checkout = ({ item }) => {
         );
 
         setProcessing(false)
-        setSuccess('')
+
         if (confirmError) {
             setErrors(confirmError.message)
         }
 
 
         if (paymentIntent.status === "succeeded") {
-            console.log("paymentIntent", paymentIntent);
-            setSuccess("Your payment Done")
-            setTransactionId(paymentIntent.id)
-
 
             const paymentInfo = {
                 transactionId: paymentIntent.id,
@@ -144,8 +129,6 @@ const Checkout = ({ item }) => {
 
 
     };
-    console.log(success, transactionId);
-
 
     return (
         <div >

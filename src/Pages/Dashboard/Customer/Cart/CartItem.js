@@ -17,9 +17,6 @@ const CartItem = ({ item, handleDelete }) => {
         navigate("/dashboard/payment", { state: { data: item } })
     }
 
-
-
-
     return (
         <tr>
 
