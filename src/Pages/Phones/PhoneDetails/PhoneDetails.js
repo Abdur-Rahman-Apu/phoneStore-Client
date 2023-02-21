@@ -8,16 +8,14 @@ const PhoneDetails = () => {
 
     const data = useLoaderData()
 
-
-
-    const { _id, productName, productPrice, description, productImage, SellerEmail } = data;
+    const { _id, productName, productPrice, description, productImage } = data;
 
     const { user } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
     // check already booked or not
-    const { data: bookedItems, refetch } = useQuery({
+    const { data: bookedItems } = useQuery({
         queryKey: ['alreadyBooked'],
         queryFn: async () => {
             const data = await fetch(`http://localhost:5000/bookedItems`)
@@ -25,10 +23,7 @@ const PhoneDetails = () => {
         }
     })
 
-    console.log(bookedItems);
-
     const isBooked = bookedItems?.find(item => item.productId === _id)
-    console.log(isBooked);
 
     const handleBooking = () => {
 
@@ -42,7 +37,7 @@ const PhoneDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 if (data.acknowledged) {
                     toast.success("Ordered successfully", {
                         duration: 4000,

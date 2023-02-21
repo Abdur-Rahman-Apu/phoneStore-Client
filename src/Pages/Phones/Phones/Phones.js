@@ -12,12 +12,7 @@ const Phones = () => {
     const { id } = useParams()
     const [products] = useProduct()
 
-    const { user, loading } = useContext(AuthContext)
-
-    console.log(products);
-    console.log(id);
-
-
+    const { loading } = useContext(AuthContext)
 
     let items, category;
     if (id === '1') {
@@ -36,25 +31,18 @@ const Phones = () => {
         products ? items = products?.button : items = null
     }
 
-
-
     const [itemOffset, setItemOffset] = useState(0);
 
     const itemsPerPage = 3
 
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     const currentItems = items?.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(items?.length / itemsPerPage);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % items?.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
-
     }
 
     if (loading) {

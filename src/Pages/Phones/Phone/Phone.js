@@ -7,8 +7,8 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const Phone = ({ item }) => {
 
-    const { user, loading } = useContext(AuthContext)
-    console.log(item);
+    const { loading } = useContext(AuthContext)
+
 
     if (loading) {
         return <>
