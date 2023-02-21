@@ -40,7 +40,7 @@ const AdvertiseProduct = () => {
             })
     }, [])
     return (
-        <div className='h-[500px] mb-36'>
+        products && <div className='h-[500px] mb-36'>
             <h1 className='text-center text-4xl font-bold text-boldGreen my-20'>Advertisement</h1>
 
             <Swiper
