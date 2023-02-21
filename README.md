@@ -46,7 +46,7 @@ Phone store is a website of buying and selling phone.
 ![Seller page](https://i.ibb.co/ZmSVDdc/screencapture-phone-store-de866-web-app-dashboard-add-Item-2023-02-21-10-27-34.png)
 ## Tech Stack
 
-**Client:** TailwindCSS, ES6, JavaScript, DaisyUi, React, TanStackQuery, React-FontAwesome, Lottie, React-paginate, EmailJS, React-hook-form, Stripe, React-router, React-hot-toast, Swiper.js
+**Client:** TailwindCSS, ES6, JavaScript, DaisyUi, React, TanStackQuery, React-FontAwesome, Lottie, React-paginate, EmailJS, React-hook-form, Stripe, React-router, React-hot-toast, Swiper.js, JWT
 
 **Server:** Node, Express, Firebase, MongoDB, ImageBB
 
