@@ -2,7 +2,7 @@ import React from 'react';
 import './displayAdv.css'
 
 const DisplayAdvertiseProduct = ({ item }) => {
-    console.log(item);
+
     return (
 
         <div className="card w-full h-full bg-base-100 shadow-xl">
@@ -15,9 +15,7 @@ const DisplayAdvertiseProduct = ({ item }) => {
                 <p className='text-xl font-bold text-gray-900 dark:text-white'>${item?.productPrice}</p>
 
             </div>
-        // </div>
-
-
+        </div>
 
     );
 };

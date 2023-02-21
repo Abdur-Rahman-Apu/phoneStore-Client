@@ -19,10 +19,6 @@ const AdvertiseProduct = () => {
 
     const [products, setProducts] = useState([])
 
-
-
-
-
     // fetch data 
     useEffect(() => {
         fetch(`http://localhost:5000/products`)
@@ -39,6 +35,7 @@ const AdvertiseProduct = () => {
 
             })
     }, [])
+
     return (
         products && <div className='h-[500px] mb-36'>
             <h1 className='text-center text-4xl font-bold text-boldGreen my-20'>Advertisement</h1>
