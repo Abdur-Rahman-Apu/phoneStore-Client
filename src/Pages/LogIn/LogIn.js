@@ -25,15 +25,11 @@ const LogIn = () => {
 
         input.setAttribute("type", `${protect}`)
 
-
-
-        console.log(input.attributes.type);
-
     }
 
     //handle Log in
 
-    const { logIn, loading, setLoading, updatePassword, googleSignIn } = useContext(AuthContext)
+    const { logIn, loading, setLoading } = useContext(AuthContext)
 
 
     const navigate = useNavigate()
@@ -96,8 +92,6 @@ const LogIn = () => {
 
         setLoading(false)
     }
-
-
 
     return (
         <div className="hero min-h-screen bg-base-200 dark:bg-black">
