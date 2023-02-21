@@ -27,7 +27,7 @@ Phone store is a website of buying and selling phone.
 
 ## Screenshots
 
-![Home page](https://i.ibb.co/HB4LSNW/screencapture-phone-store-de866-web-app-2023-02-21-10-21-27.png)
+![Home page](https://i.ibb.co/0CMxJmf/screencapture-phone-store-de866-web-app-2023-02-21-21-43-19.png)
 
 ![Log in page](https://i.ibb.co/wz8c8Ls/screencapture-phone-store-de866-web-app-login-2023-02-21-10-26-34.png)
 
