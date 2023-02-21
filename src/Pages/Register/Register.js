@@ -56,7 +56,7 @@ const Register = () => {
                     signUp(email, password)
                         .then(result => {
                             const user = result.user;
-                            console.log(user);
+
                             const profileInfo = {
                                 displayName: name,
                                 photoURL: imgData.data.url
@@ -81,15 +81,15 @@ const Register = () => {
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            console.log(data);
+
                                             if (data.acknowledged) {
 
                                                 navigate('/login')
-                                                console.log("Asci");
+
 
                                                 logOut()
                                                     .then(() => {
-                                                        console.log("Logged out");
+
                                                     })
 
                                                 toast.success("User registered successfully. Please log in", {
