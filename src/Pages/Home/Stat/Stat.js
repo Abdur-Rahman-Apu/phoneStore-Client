@@ -7,7 +7,7 @@ const Stat = () => {
     const [orders, setOrders] = useState(0)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://phone-store-ten.vercel.app/users`)
             .then(res => res.json())
             .then(data => {
 
@@ -19,7 +19,7 @@ const Stat = () => {
             })
 
 
-        fetch(`http://localhost:5000/allPaidItems`)
+        fetch(`https://phone-store-ten.vercel.app/allPaidItems`)
             .then(res => res.json())
             .then(data => setOrders(data.count))
     }, [])

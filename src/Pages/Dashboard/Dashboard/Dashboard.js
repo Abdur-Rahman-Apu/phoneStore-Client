@@ -21,12 +21,12 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext)
 
     if (role === 'Customer') {
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
+        fetch(`https://phone-store-ten.vercel.app/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setTotalCart(data?.user?.booked?.length))
 
 
-        fetch(`http://localhost:5000/boughtItem?email=${user?.email}`)
+        fetch(`https://phone-store-ten.vercel.app/boughtItem?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setBought(data.length))
     }
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
 
         //total sold
-        fetch(`http://localhost:5000/allPaid?email=${user?.email}`)
+        fetch(`https://phone-store-ten.vercel.app/allPaid?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
 
@@ -72,7 +72,7 @@ const Dashboard = () => {
 
     if (role === 'Admin') {
 
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://phone-store-ten.vercel.app/users`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

@@ -47,7 +47,7 @@ const AddItem = () => {
                     }
 
 
-                    fetch(`http://localhost:5000/products`, {
+                    fetch(`https://phone-store-ten.vercel.app/products`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

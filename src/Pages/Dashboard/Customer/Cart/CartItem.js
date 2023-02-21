@@ -7,7 +7,7 @@ const CartItem = ({ item, handleDelete }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${item?.productId}`)
+        fetch(`https://phone-store-ten.vercel.app/product/${item?.productId}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [item?.productId])

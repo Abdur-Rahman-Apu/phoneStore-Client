@@ -18,7 +18,7 @@ const PhoneDetails = () => {
     const { data: bookedItems } = useQuery({
         queryKey: ['alreadyBooked'],
         queryFn: async () => {
-            const data = await fetch(`http://localhost:5000/bookedItems`)
+            const data = await fetch(`https://phone-store-ten.vercel.app/bookedItems`)
             return data.json();
         }
     })
@@ -27,7 +27,7 @@ const PhoneDetails = () => {
 
     const handleBooking = () => {
 
-        fetch(`http://localhost:5000/booking?email=${user?.email}`, {
+        fetch(`https://phone-store-ten.vercel.app/booking?email=${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

@@ -15,7 +15,7 @@ const Checkout = ({ item }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${item?.productId}`)
+        fetch(`https://phone-store-ten.vercel.app/product/${item?.productId}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [item?.productId])
@@ -32,7 +32,7 @@ const Checkout = ({ item }) => {
     useEffect(() => {
 
         if (product?.productPrice) {
-            fetch(`http://localhost:5000/create-payment-intent`, {
+            fetch(`https://phone-store-ten.vercel.app/create-payment-intent`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -107,7 +107,7 @@ const Checkout = ({ item }) => {
                 buyerEmail: user?.email
             }
 
-            fetch(`http://localhost:5000/paid`, {
+            fetch(`https://phone-store-ten.vercel.app/paid`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

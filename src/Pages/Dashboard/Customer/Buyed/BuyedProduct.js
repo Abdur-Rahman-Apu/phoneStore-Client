@@ -9,7 +9,7 @@ const BuyedProduct = () => {
     const [bought, setBought] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/boughtItem?email=${user?.email}`)
+        fetch(`https://phone-store-ten.vercel.app/boughtItem?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setBought(data))
     }, [user?.email])

@@ -9,7 +9,7 @@ const SoldItems = () => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allPaid?email=${user?.email}`)
+        fetch(`https://phone-store-ten.vercel.app/allPaid?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setSoldItems(data))
     }, [user?.email])

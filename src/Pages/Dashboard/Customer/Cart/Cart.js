@@ -15,7 +15,7 @@ const Cart = () => {
         {
             queryKey: ['bookedItems'],
             queryFn: async () => {
-                const data = await fetch(`http://localhost:5000/user?email=${user?.email}`)
+                const data = await fetch(`https://phone-store-ten.vercel.app/user?email=${user?.email}`)
                 return data.json();
             }
         }
@@ -25,7 +25,7 @@ const Cart = () => {
     const handleDelete = (id) => {
         setLoading(true)
 
-        fetch(`http://localhost:5000/deleteCartItem?productId=${id}&email=${user?.email}`, {
+        fetch(`https://phone-store-ten.vercel.app/deleteCartItem?productId=${id}&email=${user?.email}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

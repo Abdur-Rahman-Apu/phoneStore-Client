@@ -72,7 +72,7 @@ const Register = () => {
                                         image: imgData.data.url,
                                         role
                                     }
-                                    fetch(`http://localhost:5000/users`, {
+                                    fetch(`https://phone-store-ten.vercel.app/users`, {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json',

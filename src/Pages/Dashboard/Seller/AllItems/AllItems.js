@@ -23,7 +23,7 @@ const AllItems = () => {
 
     // handle advertise
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/advertise/${id}`, {
+        fetch(`https://phone-store-ten.vercel.app/advertise/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -47,7 +47,7 @@ const AllItems = () => {
 
     // delete item
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteItem/${id}`, {
+        fetch(`https://phone-store-ten.vercel.app/deleteItem/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -47,7 +47,7 @@ const LogIn = () => {
         const email = event.target.childNodes[0].querySelector('input').value
         const password = event.target.childNodes[1].querySelector('input').value
 
-        fetch(`http://localhost:5000/user?email=${email}`)
+        fetch(`https://phone-store-ten.vercel.app/user?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.result) {
@@ -60,7 +60,7 @@ const LogIn = () => {
                                 email: email
                             }
 
-                            fetch('http://localhost:5000/jwt', {
+                            fetch('https://phone-store-ten.vercel.app/jwt', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json'

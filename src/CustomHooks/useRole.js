@@ -8,7 +8,7 @@ const useRole = () => {
     const [role, setRole] = useState(null)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
+        fetch(`https://phone-store-ten.vercel.app/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setRole(data?.role))
     }, [user?.email])

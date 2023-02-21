@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
             {
                 path: '/phoneDetails/:id',
                 element: <PhoneDetails></PhoneDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params?.id}`)
+                loader: ({ params }) => fetch(`https://phone-store-ten.vercel.app/product/${params?.id}`)
             },
         ]
     },
