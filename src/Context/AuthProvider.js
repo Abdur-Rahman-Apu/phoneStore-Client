@@ -1,8 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Firebase/Firebase.init';
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { useQuery } from '@tanstack/react-query';
-
 
 export const AuthContext = createContext()
 
@@ -49,13 +47,6 @@ const AuthProvider = ({ children }) => {
     const updatePassword = (email) => {
         return sendPasswordResetEmail(auth, email);
     }
-
-
-
-
-
-
-
 
     // manage user 
     useEffect(() => {
