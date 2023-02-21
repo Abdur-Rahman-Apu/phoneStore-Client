@@ -37,13 +37,7 @@ const Navbar = () => {
 
 
     // menus
-    const { user, logOut, loading, setLoading } = useContext(AuthContext)
-
-    let activeStyle = {
-        textDecoration: "underline",
-    }
-
-    let activeClassName = "active-link";
+    const { user, logOut } = useContext(AuthContext)
 
     const pathName = useLocation().pathname;
     console.log(pathName);
@@ -66,11 +60,12 @@ const Navbar = () => {
                 <li className='hover:bg-[#3e363f] hover:transition-all hover:duration-[0.6s]'><Link to="/category/3" className={`justify-center ${pathName === '/category/3' ? 'bg-black' : ''}`}>Button</Link></li>
             </ul>
         </li>
+        <li><Link className={`${pathName === '/contact' ? 'active' : ''}`} to='/contact' >Contact Us</Link></li>
 
         {
             user && <li><Link className={`${pathName === '/dashboard' ? 'active' : ''}`} to="/dashboard">Dashboard</Link></li>
         }
-        <li><Link className={`${pathName === '/contact' ? 'active' : ''}`} to='/contact' >Contact Us</Link></li>
+
     </>
 
     //user role
@@ -80,8 +75,7 @@ const Navbar = () => {
 
 
 
-    setLoading(true)
-    console.log("Before render");
+
 
     useEffect(() => {
 
@@ -99,14 +93,6 @@ const Navbar = () => {
 
     }, [user?.email, cartCount])
 
-
-
-
-
-    setLoading(false)
-    if (loading) {
-        return "Loading"
-    }
     return (
         <div className="navbar bg-transparent shadow-md bg-[#e1e6e1] dark:bg-[#b1fc99] dark:shadow-lg">
             <div className="navbar-start">
